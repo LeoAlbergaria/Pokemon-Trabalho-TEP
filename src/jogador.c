@@ -1,10 +1,4 @@
 #include "../include/jogador.h"
-#include "../include/pokemon.h" 
-#include "../include/menu.h"
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 struct jogador
 {
@@ -25,8 +19,7 @@ Jogador *criaJogador(char *nome)
     jogador->qtdPokemons = 0;
     jogador->qtdPokebolas = 3;
     jogador->vitorias = 0;
-
-    jogador->listaPokemon = criaListaPokemon();
+    jogador->listaPokemon = NULL;
 
     return jogador;
 }
@@ -46,7 +39,7 @@ int verificaNome(char *nome)
 
 void destroiJogador(Jogador *jogador)
 {
-    destroiListaPokemon(jogador->qtdPokemons, jogador->listaPokemon);
+    // destroiListaPokemon(jogador->qtdPokemons, jogador->listaPokemon);
     free(jogador->listaPokemon);
     free(jogador->nome);
     free(jogador);

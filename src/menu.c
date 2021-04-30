@@ -1,9 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "../include/menu.h"
-#include "../include/jogador.h"
 
 void menuPrincipal()
 {
@@ -24,6 +19,7 @@ void menuPrincipal()
             }while(verificaNome(nome) != 1);
             if(jogador == NULL)
                  jogador = criaJogador(nome);
+            menuIniciais();
             break;
 
         case 2:
@@ -40,4 +36,17 @@ void menuPrincipal()
 void imprimeMenuPrincipal()
 {
   printf("1 - Jogar\n2 - Ranking\n3 - Sair\n");
+}
+
+void menuIniciais()
+{
+    ListaPokemon *iniciais = NULL;
+
+    iniciais = Insere(iniciais, pikachu());
+    iniciais = Insere(iniciais, charizard());
+    iniciais = Insere(iniciais, blastoise());
+    iniciais = Insere(iniciais, venosauro());
+    iniciais = Insere(iniciais, steelix());
+    iniciais = Insere(iniciais, mew());
+    ImprimeListaPokemon(iniciais);
 }
