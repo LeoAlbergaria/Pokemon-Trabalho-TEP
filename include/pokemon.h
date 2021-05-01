@@ -20,7 +20,7 @@ void criaLista(ListaPokemon *lista);
 
 void ImprimeListaPokemon(ListaPokemon *le);
 
-void destroiListaPokemon(int qtdPokemon, Pokemon* pokemon);
+void destroiListaPokemon(ListaPokemon *lista);
 
 char *retornaNomePokemon(Pokemon *pokemon);
 

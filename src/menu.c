@@ -22,7 +22,7 @@ void menuPrincipal()
             }while(verificaNome(nome) != 1);
             if(jogador == NULL)
                  jogador = criaJogador(nome);
-            // menuIniciais(jogador);
+            menuIniciais(jogador);
             break;
 
         case 2:
@@ -56,6 +56,8 @@ void menuIniciais(Jogador *jogador)
     celulaAtual = insere(celulaAtual, selecionarPokemon('s'));
     celulaAtual = insere(celulaAtual, selecionarPokemon('m'));
     ImprimeListaPokemon(iniciais);
+
+    destroiListaPokemon(iniciais);
 
     printf("***%s***\n", retornaNome(jogador));
     // escolherIniciais(jogador, iniciais);

@@ -53,13 +53,20 @@ void ImprimeListaPokemon(ListaPokemon *le)
     }while (celula != NULL);
 }
 
-void destroiListaPokemon(int qtdPokemon, Pokemon* pokemon)
-{
-    for(int i = 0; i < qtdPokemon; i++)
+void destroiListaPokemon(ListaPokemon *lista)
+{   
+    ListaPokemon *celulaAtual = lista;
+    ListaPokemon *celulaProx;
+
+    do
     {
-        free(pokemon->nome);
-        free(pokemon->tipo);
-    }
+        celulaProx = celulaAtual->prox;
+        free(celulaAtual->pokemon->nome);
+        free(celulaAtual->pokemon->tipo);
+        free(celulaAtual->pokemon);
+        free(celulaAtual);
+        celulaAtual = celulaProx;
+    }while(celulaAtual != NULL);
 }
 
 char *retornaNomePokemon(Pokemon *pokemon)
