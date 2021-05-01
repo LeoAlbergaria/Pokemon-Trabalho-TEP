@@ -1,4 +1,6 @@
 #include "../include/pokemon.h"
+#include "../include/jogador.h" 
+#include "../include/menu.h"
 
 struct pokemon
 {
@@ -17,12 +19,25 @@ struct listaPokemon
     struct listaPokemon *prox;
 };
 
-ListaPokemon *Insere(ListaPokemon *le, Pokemon *pokemon)
+typedef Pokemon* (*fptrPokemon)();
+
+fptrPokemon pokemons[128] = {NULL};
+
+ListaPokemon *iniciaLista(Pokemon *pokemon)
 {
-    ListaPokemon *novo = (ListaPokemon*) malloc(sizeof(ListaPokemon));
-    novo->pokemon = pokemon;
-    novo->prox = le;
-    return novo;
+    ListaPokemon *iniciais = (ListaPokemon*) malloc(sizeof(ListaPokemon));
+    iniciais->pokemon = pokemon;
+    iniciais->prox = NULL;
+    return iniciais;
+}
+
+ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon)
+{
+    celulaAtual->prox = (ListaPokemon*)malloc(sizeof(ListaPokemon));
+    celulaAtual = celulaAtual->prox;
+    celulaAtual->pokemon = pokemon;
+    celulaAtual->prox = NULL;
+    return celulaAtual;
 }
 
 void ImprimeListaPokemon(ListaPokemon *le)
@@ -50,6 +65,21 @@ void destroiListaPokemon(int qtdPokemon, Pokemon* pokemon)
 char *retornaNomePokemon(Pokemon *pokemon)
 {
     return pokemon->nome;
+}
+
+void inicializaTabelaPokemons()
+{
+  pokemons['p'] = pikachu;
+  pokemons['c'] = charizard;
+  pokemons['b'] = blastoise;
+  pokemons['v'] = venosauro;
+  pokemons['s'] = steelix;
+  pokemons['m'] = mew;
+}
+
+Pokemon *selecionarPokemon(char code)
+{
+   return pokemons[code]();
 }
 
 Pokemon *pikachu()

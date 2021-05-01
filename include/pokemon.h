@@ -1,5 +1,5 @@
-#ifndef Pokemon_h
-#define Pokemon_h
+#ifndef POKEMON_H
+#define POKEMON_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,13 +12,21 @@ typedef struct pokemon Pokemon;
 
 typedef struct listaPokemon ListaPokemon;
 
-ListaPokemon *Insere(ListaPokemon *le, Pokemon *pokemon);
+ListaPokemon *iniciaLista(Pokemon *pokemon);
+
+ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon);
+
+void criaLista(ListaPokemon *lista);
 
 void ImprimeListaPokemon(ListaPokemon *le);
 
 void destroiListaPokemon(int qtdPokemon, Pokemon* pokemon);
 
 char *retornaNomePokemon(Pokemon *pokemon);
+
+void inicializaTabelaPokemons();
+
+Pokemon *selecionarPokemon(char code);
 
 Pokemon *pikachu();
 

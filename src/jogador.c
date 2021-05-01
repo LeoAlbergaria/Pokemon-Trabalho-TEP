@@ -1,4 +1,6 @@
 #include "../include/jogador.h"
+#include "../include/pokemon.h" 
+#include "../include/menu.h"
 
 struct jogador
 {
@@ -36,6 +38,11 @@ int verificaNome(char *nome)
     }
     return 1;
 }
+
+// void escolherIniciais(Jogador *jogador, ListaPokemon *listaPokemon)
+// {
+//     printf("oi");
+// }
 
 void destroiJogador(Jogador *jogador)
 {

@@ -1,5 +1,5 @@
-#ifndef Jogador_h
-#define Jogador_h
+#ifndef JOGADOR_H
+#define JOGADOR_H
 
 #include <ctype.h>
 #include <stdio.h>
@@ -14,6 +14,8 @@ typedef struct jogador Jogador;
 Jogador *criaJogador(char *nome);
 
 int verificaNome(char *nome);
+
+// void escolherIniciais(Jogador *jogador, ListaPokemon *listaPokemon);
 
 void destroiJogador(Jogador *jogador);
 
