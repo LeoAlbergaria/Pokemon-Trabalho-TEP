@@ -40,10 +40,10 @@ ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon)
     return celulaAtual;
 }
 
-void ImprimeListaPokemon(ListaPokemon *le)
+void imprimeListaPokemon(ListaPokemon *lista)
 {
     ListaPokemon * celula;
-    celula = le;
+    celula = lista;
 
     int index = 1;
     do{
@@ -51,6 +51,35 @@ void ImprimeListaPokemon(ListaPokemon *le)
         celula = celula->prox;
         index++;
     }while (celula != NULL);
+}
+
+ListaPokemon *removePokemonLista(ListaPokemon *lista, int posicaoPokemon)
+{
+    ListaPokemon *celulaAnterior = NULL;
+    ListaPokemon *celulaAtual = lista;
+    int index = 0;
+    while(celulaAtual != NULL && index != posicaoPokemon)
+    {
+        celulaAnterior = celulaAtual;
+        celulaAtual = celulaAtual->prox;
+        index++;
+    }
+    if(celulaAtual == NULL)
+        return lista;
+    if(index == posicaoPokemon)
+    {
+        if(index == 0)
+        {
+            lista = celulaAtual->prox;
+            destroiCelula(celulaAtual);
+        }
+        else
+        {
+            celulaAnterior->prox = celulaAtual->prox;
+            destroiCelula(celulaAtual);
+        }
+    }
+    return lista;
 }
 
 void destroiListaPokemon(ListaPokemon *lista)
@@ -61,12 +90,17 @@ void destroiListaPokemon(ListaPokemon *lista)
     do
     {
         celulaProx = celulaAtual->prox;
-        free(celulaAtual->pokemon->nome);
-        free(celulaAtual->pokemon->tipo);
-        free(celulaAtual->pokemon);
-        free(celulaAtual);
+        destroiCelula(celulaAtual);
         celulaAtual = celulaProx;
     }while(celulaAtual != NULL);
+}
+
+void destroiCelula(ListaPokemon *celula)
+{
+    free(celula->pokemon->nome);
+    free(celula->pokemon->tipo);
+    free(celula->pokemon);
+    free(celula);
 }
 
 char *retornaNomePokemon(Pokemon *pokemon)

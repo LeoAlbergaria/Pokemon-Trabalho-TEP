@@ -18,9 +18,13 @@ ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon);
 
 void criaLista(ListaPokemon *lista);
 
-void ImprimeListaPokemon(ListaPokemon *le);
+void imprimeListaPokemon(ListaPokemon *lista);
+
+ListaPokemon *removePokemonLista(ListaPokemon *lista, int posicaoPokemon);
 
 void destroiListaPokemon(ListaPokemon *lista);
+
+void destroiCelula(ListaPokemon *celula);
 
 char *retornaNomePokemon(Pokemon *pokemon);
 

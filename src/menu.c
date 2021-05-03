@@ -55,10 +55,12 @@ void menuIniciais(Jogador *jogador)
     celulaAtual = insere(celulaAtual, selecionarPokemon('v'));
     celulaAtual = insere(celulaAtual, selecionarPokemon('s'));
     celulaAtual = insere(celulaAtual, selecionarPokemon('m'));
-    ImprimeListaPokemon(iniciais);
+    imprimeListaPokemon(iniciais);
+    iniciais = removePokemonLista(iniciais, 1);
+    imprimeListaPokemon(iniciais);
 
     destroiListaPokemon(iniciais);
 
     printf("***%s***\n", retornaNome(jogador));
-    // escolherIniciais(jogador, iniciais);
+    escolherIniciais(jogador, iniciais);
 }

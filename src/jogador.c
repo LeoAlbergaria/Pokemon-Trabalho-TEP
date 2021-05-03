@@ -41,7 +41,7 @@ int verificaNome(char *nome)
 
 // void escolherIniciais(Jogador *jogador, ListaPokemon *listaPokemon)
 // {
-//     printf("oi");
+    
 // }
 
 void destroiJogador(Jogador *jogador)

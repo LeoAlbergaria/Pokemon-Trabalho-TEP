@@ -15,7 +15,7 @@ Jogador *criaJogador(char *nome);
 
 int verificaNome(char *nome);
 
-// void escolherIniciais(Jogador *jogador, ListaPokemon *listaPokemon);
+void escolherIniciais();
 
 void destroiJogador(Jogador *jogador);
 

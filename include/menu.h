@@ -13,5 +13,6 @@ void menuPrincipal();
 void imprimeMenuPrincipal();
 
 void menuIniciais();
+// void menuIniciais(Jogador *jogador);
 
 #endif
