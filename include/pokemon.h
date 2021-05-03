@@ -14,7 +14,7 @@ typedef struct listaPokemon ListaPokemon;
 
 ListaPokemon *iniciaLista(Pokemon *pokemon);
 
-ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon);
+ListaPokemon *inserePokemon(ListaPokemon *celulaAtual, Pokemon *pokemon);
 
 void criaLista(ListaPokemon *lista);
 
@@ -28,9 +28,11 @@ void destroiCelula(ListaPokemon *celula);
 
 char *retornaNomePokemon(Pokemon *pokemon);
 
+char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon);
+
 void inicializaTabelaPokemons();
 
-Pokemon *selecionarPokemon(char code);
+Pokemon *selecionaPokemon(char code);
 
 Pokemon *pikachu();
 

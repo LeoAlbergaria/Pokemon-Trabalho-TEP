@@ -21,7 +21,7 @@ void menuPrincipal()
                 scanf("%s", nome);     
             }while(verificaNome(nome) != 1);
             if(jogador == NULL)
-                 jogador = criaJogador(nome);
+                jogador = criaJogador(nome);
             menuIniciais(jogador);
             break;
 
@@ -46,21 +46,17 @@ void menuIniciais(Jogador *jogador)
     ListaPokemon *iniciais = NULL;
     ListaPokemon *celulaAtual;
 
-    iniciais = iniciaLista(selecionarPokemon('p'));
+    iniciais = iniciaLista(selecionaPokemon('P'));
 
     celulaAtual = iniciais;
 
-    celulaAtual = insere(celulaAtual, selecionarPokemon('c'));
-    celulaAtual = insere(celulaAtual, selecionarPokemon('b'));
-    celulaAtual = insere(celulaAtual, selecionarPokemon('v'));
-    celulaAtual = insere(celulaAtual, selecionarPokemon('s'));
-    celulaAtual = insere(celulaAtual, selecionarPokemon('m'));
-    imprimeListaPokemon(iniciais);
-    iniciais = removePokemonLista(iniciais, 1);
-    imprimeListaPokemon(iniciais);
+    celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('C'));
+    celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('B'));
+    celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('V'));
+    celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('S'));
+    celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('M'));
 
-    destroiListaPokemon(iniciais);
+    escolherIniciais(jogador, iniciais);
 
     printf("***%s***\n", retornaNome(jogador));
-    escolherIniciais(jogador, iniciais);
 }

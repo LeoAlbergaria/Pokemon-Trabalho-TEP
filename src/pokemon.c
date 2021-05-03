@@ -25,13 +25,13 @@ fptrPokemon pokemons[128] = {NULL};
 
 ListaPokemon *iniciaLista(Pokemon *pokemon)
 {
-    ListaPokemon *iniciais = (ListaPokemon*) malloc(sizeof(ListaPokemon));
+    ListaPokemon *iniciais = (ListaPokemon*)malloc(sizeof(ListaPokemon));
     iniciais->pokemon = pokemon;
     iniciais->prox = NULL;
     return iniciais;
 }
 
-ListaPokemon *insere(ListaPokemon *celulaAtual, Pokemon *pokemon)
+ListaPokemon *inserePokemon(ListaPokemon *celulaAtual, Pokemon *pokemon)
 {
     celulaAtual->prox = (ListaPokemon*)malloc(sizeof(ListaPokemon));
     celulaAtual = celulaAtual->prox;
@@ -108,17 +108,33 @@ char *retornaNomePokemon(Pokemon *pokemon)
     return pokemon->nome;
 }
 
-void inicializaTabelaPokemons()
+char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon)
 {
-  pokemons['p'] = pikachu;
-  pokemons['c'] = charizard;
-  pokemons['b'] = blastoise;
-  pokemons['v'] = venosauro;
-  pokemons['s'] = steelix;
-  pokemons['m'] = mew;
+    int index = 0;
+    ListaPokemon *celulaAtual = lista;
+
+    while(celulaAtual != NULL && index != posicaoPokemon)
+    {
+        celulaAtual = celulaAtual->prox;
+        index++;
+    }
+    if(celulaAtual != NULL && index == posicaoPokemon)
+        return retornaNomePokemon(celulaAtual->pokemon);
+    printf("ERRO. Pokemon nao encontrado!!!\n");
+    return NULL;
 }
 
-Pokemon *selecionarPokemon(char code)
+void inicializaTabelaPokemons()
+{
+  pokemons['P'] = pikachu;
+  pokemons['C'] = charizard;
+  pokemons['B'] = blastoise;
+  pokemons['V'] = venosauro;
+  pokemons['S'] = steelix;
+  pokemons['M'] = mew;
+}
+
+Pokemon *selecionaPokemon(char code)
 {
    return pokemons[code]();
 }
