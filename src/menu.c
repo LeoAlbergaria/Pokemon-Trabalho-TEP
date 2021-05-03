@@ -1,6 +1,4 @@
-#include "../include/menu.h"
-#include "../include/jogador.h" 
-#include "../include/pokemon.h"
+#include "menu.h"
 
 void menuPrincipal()
 {
@@ -23,6 +21,7 @@ void menuPrincipal()
             if(jogador == NULL)
                 jogador = criaJogador(nome);
             menuIniciais(jogador);
+            menuBatalha(jogador);
             break;
 
         case 2:
@@ -46,8 +45,7 @@ void menuIniciais(Jogador *jogador)
     ListaPokemon *iniciais = NULL;
     ListaPokemon *celulaAtual;
 
-    iniciais = iniciaLista(selecionaPokemon('P'));
-
+    iniciais = iniciaLista(selecionaPokemon('P')); 
     celulaAtual = iniciais;
 
     celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('C'));
@@ -57,6 +55,4 @@ void menuIniciais(Jogador *jogador)
     celulaAtual = inserePokemon(celulaAtual, selecionaPokemon('M'));
 
     escolherIniciais(jogador, iniciais);
-
-    printf("***%s***\n", retornaNome(jogador));
 }

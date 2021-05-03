@@ -1,6 +1,4 @@
-#include "../include/pokemon.h"
-#include "../include/jogador.h" 
-#include "../include/menu.h"
+#include "pokemon.h"
 
 struct pokemon
 {
@@ -97,10 +95,15 @@ void destroiListaPokemon(ListaPokemon *lista)
 
 void destroiCelula(ListaPokemon *celula)
 {
-    free(celula->pokemon->nome);
-    free(celula->pokemon->tipo);
-    free(celula->pokemon);
+    destroiPokemon(celula->pokemon);
     free(celula);
+}
+
+void destroiPokemon(Pokemon *pokemon)
+{
+    free(pokemon->nome);
+    free(pokemon->tipo);
+    free(pokemon);
 }
 
 char *retornaNomePokemon(Pokemon *pokemon)
@@ -122,6 +125,21 @@ char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon)
         return retornaNomePokemon(celulaAtual->pokemon);
     printf("ERRO. Pokemon nao encontrado!!!\n");
     return NULL;
+}
+
+Pokemon *retornaPokemon(ListaPokemon* listaPokemon)
+{
+    return listaPokemon->pokemon;
+}
+
+int retornaHpPokemon(Pokemon* pokemon)
+{
+    return pokemon->hp;
+}
+
+void SetterPokemonHp(Pokemon *pokemon, int hp)
+{
+    pokemon->hp = hp;
 }
 
 void inicializaTabelaPokemons()

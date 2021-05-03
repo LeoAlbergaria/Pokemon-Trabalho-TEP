@@ -1,6 +1,4 @@
-#include "../include/jogador.h"
-#include "../include/pokemon.h" 
-#include "../include/menu.h"
+#include "jogador.h"
 
 struct jogador
 {
@@ -46,7 +44,7 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
     int qtdIniciais = 6, opcao;
     while(jogador->qtdPokemons < 3)
     {
-        // system("clear");
+        system("clear");
         printf("Escolha 1 dos %d pokemons iniciais!\n", qtdIniciais);
         imprimeListaPokemon(pokemonsIniciais);
         do
@@ -56,7 +54,6 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
         while (opcao <= 0 && opcao >= qtdIniciais);
 
         char *nomePokemon = retornaNomePokemonLista(pokemonsIniciais, opcao - 1);
-        printf("**%s**\n", nomePokemon);
 
         if(qtdIniciais == 6)
         {
@@ -67,12 +64,17 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
         {
             jogador->celulaAtual = inserePokemon(jogador->celulaAtual, selecionaPokemon(nomePokemon[0]));
         }
-        imprimeListaPokemon(jogador->listaPokemon);
         pokemonsIniciais = removePokemonLista(pokemonsIniciais, opcao-1);
         jogador->qtdPokemons++;
         qtdIniciais--;
     }
+    jogador->qtdPokemons = 3;
     destroiListaPokemon(pokemonsIniciais);
+}
+
+void removePokemonListaJogador(Jogador *jogador)
+{ 
+    jogador->listaPokemon = removePokemonLista(jogador->listaPokemon, 0);
 }
 
 void destroiJogador(Jogador *jogador)
@@ -85,4 +87,34 @@ void destroiJogador(Jogador *jogador)
 char *retornaNome(Jogador *jogador)
 {
     return jogador->nome;
+}
+
+Pokemon *retornaListaJogador(Jogador *jogador)
+{
+    return retornaPokemon(jogador->listaPokemon);
+}
+
+int retornaPokebolas(Jogador *jogador)
+{
+    return jogador->qtdPokebolas;
+}
+
+int retornaQtdPokemons(Jogador *jogador)
+{
+    return jogador->qtdPokemons;
+}
+
+int retornaVitorias(Jogador *jogador)
+{
+    return jogador->vitorias;
+}
+
+void SetterQtdVitoria(Jogador *jogador)
+{
+    jogador->vitorias++;
+}
+
+void SetterQtdPokemon(Jogador *jogador, int qtd)
+{
+    jogador->qtdPokemons += qtd;
 }

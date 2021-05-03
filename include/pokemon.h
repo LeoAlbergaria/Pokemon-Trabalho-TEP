@@ -5,9 +5,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/jogador.h" 
-#include "../include/menu.h"
-
 typedef struct pokemon Pokemon;
 
 typedef struct listaPokemon ListaPokemon;
@@ -15,8 +12,6 @@ typedef struct listaPokemon ListaPokemon;
 ListaPokemon *iniciaLista(Pokemon *pokemon);
 
 ListaPokemon *inserePokemon(ListaPokemon *celulaAtual, Pokemon *pokemon);
-
-void criaLista(ListaPokemon *lista);
 
 void imprimeListaPokemon(ListaPokemon *lista);
 
@@ -26,9 +21,17 @@ void destroiListaPokemon(ListaPokemon *lista);
 
 void destroiCelula(ListaPokemon *celula);
 
+void destroiPokemon(Pokemon *pokemon);
+
 char *retornaNomePokemon(Pokemon *pokemon);
 
 char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon);
+
+Pokemon *retornaPokemon(ListaPokemon* listaPokemon);
+
+int retornaHpPokemon(Pokemon* pokemon);
+
+void SetterPokemonHp(Pokemon *pokemon, int hp);
 
 void inicializaTabelaPokemons();
 

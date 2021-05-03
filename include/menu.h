@@ -5,14 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/jogador.h" 
-#include "../include/pokemon.h"
+#include "jogador.h"
 
 void menuPrincipal();
 
 void imprimeMenuPrincipal();
 
-void menuIniciais();
-// void menuIniciais(Jogador *jogador);
+void menuIniciais(Jogador *jogador);
 
 #endif

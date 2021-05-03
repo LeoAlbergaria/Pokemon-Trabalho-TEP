@@ -5,8 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/jogador.h" 
-#include "../include/pokemon.h" 
-#include "../include/menu.h"
+#include "jogador.h"
+
+void menuBatalha();
+
+void imprimeMenuOpcoes(Jogador *jogador);
 
 #endif

@@ -6,8 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../include/pokemon.h" 
-#include "../include/menu.h"
+#include "pokemon.h"
 
 typedef struct jogador Jogador;
 
@@ -15,11 +14,24 @@ Jogador *criaJogador(char *nome);
 
 int verificaNome(char *nome);
 
-void escolherIniciais();
-// void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais);
+void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais);
+
+void removePokemonListaJogador(Jogador *jogador);
 
 void destroiJogador(Jogador *jogador);
 
 char *retornaNome(Jogador *jogador);
+
+Pokemon *retornaListaJogador(Jogador *jogador);
+
+int retornaPokebolas(Jogador *jogador);
+
+int retornaQtdPokemons(Jogador *jogador);
+
+int retornaVitorias(Jogador *jogador);
+
+void SetterQtdVitoria(Jogador *jogador);
+
+void SetterQtdPokemon(Jogador *jogador, int qtd);
 
 #endif
