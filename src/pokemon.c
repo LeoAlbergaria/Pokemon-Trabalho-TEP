@@ -8,7 +8,7 @@ struct pokemon
     int forca;
     int defesa;
     int hp;
-    char estador;
+    char estado;
 };
 
 struct listaPokemon

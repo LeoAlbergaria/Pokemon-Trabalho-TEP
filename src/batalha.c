@@ -6,13 +6,13 @@ void menuBatalha(Jogador *jogador)
     Pokemon *pokemonInimigo = selecionaPokemon('C');
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
     system("clear");
-    printf("Um %s selvagem apareceu!!!\n", retornaNomePokemon(pokemonInimigo));
+    printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
     while(pokemonAtual != NULL)
     {
         while(retornaHpPokemon(pokemonAtual) > 0 && retornaHpPokemon(pokemonInimigo) > 0)
         {
-            printf("%s - %d\n", retornaNomePokemon(pokemonInimigo), retornaHpPokemon(pokemonInimigo));
-            printf("%s - %d\n", retornaNomePokemon(pokemonAtual), retornaHpPokemon(pokemonAtual));
+            printf("%s - %d  HP\n", retornaNomePokemon(pokemonInimigo), retornaHpPokemon(pokemonInimigo));
+            printf("%s - %d  HP\n\n", retornaNomePokemon(pokemonAtual), retornaHpPokemon(pokemonAtual));
             if(turnoJogador)
             {
                 imprimeMenuOpcoes(jogador);
@@ -24,6 +24,7 @@ void menuBatalha(Jogador *jogador)
                 switch(opcao)
                 {
                     case 1:
+                        SetterPokemonHp(pokemonInimigo, retornaHpPokemon(pokemonInimigo) - 100);
                         break;
 
                     case 2:
@@ -42,7 +43,7 @@ void menuBatalha(Jogador *jogador)
             }
             else
             {
-                SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - 100);
+                SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - 50);
                 turnoJogador = 1;
             }
             system("clear");
@@ -72,5 +73,5 @@ void menuBatalha(Jogador *jogador)
 
 void imprimeMenuOpcoes(Jogador *jogador)
 {
-    printf("1- Ataque 1\n2- Ataque 1\n3- Ataque3\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaPokebolas(jogador));
+    printf("1- Ataque 1\n2- Ataque 2\n3- Ataque 3\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaPokebolas(jogador));
 }
