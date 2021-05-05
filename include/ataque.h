@@ -8,7 +8,7 @@
 
 void inicializaTabelaAtaques();
 
-int calculaDano(int poder, int forca, int defesa, float mt, int relacaoTipo);
+float calculaDano(int poder, int forca, int defesa, float mt, float relacaoTipo);
 
 char* retornaNomeAtaque(int ataque);
 

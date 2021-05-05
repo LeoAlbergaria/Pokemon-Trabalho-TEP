@@ -16,8 +16,8 @@ void menuBatalha(Jogador *jogador)
     {
         while(retornaHpPokemon(pokemonAtual) > 0 && retornaHpPokemon(pokemonInimigo) > 0)
         {
-            printf("%s - %.0f %% HP\n", retornaNomePokemon(pokemonInimigo), retornaPocentagemHp(pokemonInimigo));
-            printf("%s - %.0f %% HP\n\n", retornaNomePokemon(pokemonAtual), retornaPocentagemHp(pokemonAtual));
+            printf("%s - %.1f%% HP\n", retornaNomePokemon(pokemonInimigo), retornaPocentagemHp(pokemonInimigo));
+            printf("%s - %.1f%% HP\n\n", retornaNomePokemon(pokemonAtual), retornaPocentagemHp(pokemonAtual));
             if(turnoJogador)
             {
                 imprimeMenuOpcoes(jogador, pokemonAtual);

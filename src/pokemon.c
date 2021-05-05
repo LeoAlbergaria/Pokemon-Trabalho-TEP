@@ -199,23 +199,27 @@ int retornaParalisado(Pokemon* pokemon)
 
 void setterDormindo(Pokemon *pokemon, int turnos)
 {
-    pokemon->dormindo = turnos;
+    if(turnos > pokemon->dormindo)
+        pokemon->dormindo = turnos;
 }
 
 void setterSono(Pokemon *pokemon, int turnos)
 {
-    pokemon->sono = turnos;
+    if(turnos > pokemon->sono)
+        pokemon->sono = turnos;
 }
 
 void setterQueimar(Pokemon *pokemon, int turnos)
 {
     if(strcmp(pokemon->tipo, "Fogo") != 0)
-        pokemon->queimar = turnos;
+        if(turnos > pokemon->queimar)
+            pokemon->queimar = turnos;
 }
 
 void setterParalisado(Pokemon *pokemon, int turnos)
 {
-    pokemon->paralisado = turnos;
+    if(turnos > pokemon->paralisado)
+        pokemon->paralisado = turnos;
 }
 
 void setterPokemonHp(Pokemon *pokemon, float hp)
