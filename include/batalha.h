@@ -10,7 +10,7 @@
 
 void menuBatalha();
 
-void imprimeMenuOpcoes(Jogador *jogador);
+void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon);
 
 int numeroAleatorio(int randMax);
 

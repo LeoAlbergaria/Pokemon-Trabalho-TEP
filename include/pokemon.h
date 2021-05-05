@@ -23,17 +23,43 @@ void destroiCelula(ListaPokemon *celula);
 
 void destroiPokemon(Pokemon *pokemon);
 
+int converteTipo(Pokemon *pokemon);
+
 char *retornaNomePokemon(Pokemon *pokemon);
 
 char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon);
 
 Pokemon *retornaPokemon(ListaPokemon* listaPokemon);
 
-int retornaHpPokemon(Pokemon* pokemon);
+float retornaHpPokemon(Pokemon* pokemon);
 
-int retornaHpMaxPokemon(Pokemon* pokemon);
+float retornaHpMaxPokemon(Pokemon* pokemon);
 
-void SetterPokemonHp(Pokemon *pokemon, int hp);
+float retornaPocentagemHp(Pokemon* pokemon);
+
+int retornaForca(Pokemon* pokemon);
+
+int retornaDefesa(Pokemon* pokemon);
+
+int retornaNumAtaque(Pokemon* pokemon, int num);
+
+int retornaDomindo(Pokemon* pokemon);
+
+int retornaSono(Pokemon* pokemon);
+
+int retornaQueimar(Pokemon* pokemon);
+
+int retornaParalisado(Pokemon* pokemon);
+
+void setterDormindo(Pokemon *pokemon, int turnos);
+
+void setterSono(Pokemon *pokemon, int turnos);
+
+void setterQueimar(Pokemon *pokemon, int turnos);
+
+void setterParalisado(Pokemon *pokemon, int turnos);
+
+void setterPokemonHp(Pokemon *pokemon, float hp);
 
 void inicializaTabelaPokemons();
 

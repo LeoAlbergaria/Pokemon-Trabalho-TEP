@@ -109,12 +109,12 @@ int retornaVitorias(Jogador *jogador)
     return jogador->vitorias;
 }
 
-void SetterQtdVitoria(Jogador *jogador)
+void setterQtdVitoria(Jogador *jogador)
 {
     jogador->vitorias++;
 }
 
-void SetterQtdPokemon(Jogador *jogador, int qtd)
+void setterQtdPokemon(Jogador *jogador, int qtd)
 {
     jogador->qtdPokemons += qtd;
 }

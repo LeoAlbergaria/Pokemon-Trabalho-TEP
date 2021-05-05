@@ -30,8 +30,8 @@ int retornaQtdPokemons(Jogador *jogador);
 
 int retornaVitorias(Jogador *jogador);
 
-void SetterQtdVitoria(Jogador *jogador);
+void setterQtdVitoria(Jogador *jogador);
 
-void SetterQtdPokemon(Jogador *jogador, int qtd);
+void setterQtdPokemon(Jogador *jogador, int qtd);
 
 #endif

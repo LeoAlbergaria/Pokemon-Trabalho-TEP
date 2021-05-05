@@ -7,9 +7,12 @@ struct pokemon
     int ataque[3];
     int forca;
     int defesa;
-    int hpMax;
-    int hp;
-    char estado;
+    float hpMax;
+    float hp;
+    int paralisado;
+    int sono;
+    int dormindo;
+    int queimar;
 };
 
 struct listaPokemon
@@ -107,6 +110,16 @@ void destroiPokemon(Pokemon *pokemon)
     free(pokemon);
 }
 
+int converteTipo(Pokemon *pokemon)
+{
+    if(strcmp(pokemon->tipo, "Fogo") == 0) return 0;
+    if(strcmp(pokemon->tipo, "Agua") == 0) return 1;
+    if(strcmp(pokemon->tipo, "Planta") == 0) return 2;
+    if(strcmp(pokemon->tipo, "Eletrico") == 0) return 3;
+    if(strcmp(pokemon->tipo, "Psiquico") == 0) return 4;
+    if(strcmp(pokemon->tipo, "Metal") == 0) return 5;
+}
+
 char *retornaNomePokemon(Pokemon *pokemon)
 {
     return pokemon->nome;
@@ -133,17 +146,79 @@ Pokemon *retornaPokemon(ListaPokemon* listaPokemon)
     return listaPokemon->pokemon;
 }
 
-int retornaHpPokemon(Pokemon* pokemon)
+float retornaHpPokemon(Pokemon* pokemon)
 {
     return pokemon->hp;
 }
 
-int retornaHpMaxPokemon(Pokemon* pokemon)
+float retornaHpMaxPokemon(Pokemon* pokemon)
 {
     return pokemon->hpMax;
 }
 
-void SetterPokemonHp(Pokemon *pokemon, int hp)
+float retornaPocentagemHp(Pokemon* pokemon)
+{
+    return (pokemon->hp/pokemon->hpMax)*100.0;
+}
+
+int retornaForca(Pokemon* pokemon)
+{
+    return pokemon->forca;
+}
+
+int retornaDefesa(Pokemon* pokemon)
+{
+    return pokemon->defesa;
+}
+
+
+int retornaNumAtaque(Pokemon* pokemon, int num)
+{
+    return pokemon->ataque[num];
+}
+
+int retornaDomindo(Pokemon* pokemon)
+{
+    return pokemon->dormindo;
+}
+
+int retornaSono(Pokemon* pokemon)
+{
+    return pokemon->sono;
+}
+
+int retornaQueimar(Pokemon* pokemon)
+{
+    return pokemon->queimar;
+}
+
+int retornaParalisado(Pokemon* pokemon)
+{
+    return pokemon->paralisado;
+}
+
+void setterDormindo(Pokemon *pokemon, int turnos)
+{
+    pokemon->dormindo = turnos;
+}
+
+void setterSono(Pokemon *pokemon, int turnos)
+{
+    pokemon->sono = turnos;
+}
+
+void setterQueimar(Pokemon *pokemon, int turnos)
+{
+    if(strcmp(pokemon->tipo, "Fogo") != 0)
+        pokemon->queimar = turnos;
+}
+
+void setterParalisado(Pokemon *pokemon, int turnos)
+{
+    pokemon->paralisado = turnos;
+}
+
+void setterPokemonHp(Pokemon *pokemon, float hp)
 {
     pokemon->hp = hp;
 }
@@ -182,7 +257,14 @@ Pokemon *pikachu()
     pikachu->hp = 200;
     pikachu->forca = 110;
     pikachu->defesa = 100;
-    pikachu->tipo = strdup("Elétrico");
+    pikachu->tipo = strdup("Eletrico");
+    pikachu->ataque[0] = 0;
+    pikachu->ataque[1] = 1;
+    pikachu->ataque[2] = 2;
+    pikachu->paralisado = 0;
+    pikachu->sono = 0;
+    pikachu->dormindo = 0;
+    pikachu->queimar = 0;
 
     return pikachu;
 }
@@ -197,6 +279,13 @@ Pokemon *charizard()
     charizard->forca = 160;
     charizard->defesa = 150;
     charizard->tipo = strdup("Fogo");
+    charizard->ataque[0] = 3;
+    charizard->ataque[1] = 4;
+    charizard->ataque[2] = 2;
+    charizard->paralisado = 0;
+    charizard->sono = 0;
+    charizard->dormindo = 0;
+    charizard->queimar = 0;
 
     return charizard;
 }
@@ -210,7 +299,14 @@ Pokemon *blastoise()
     blastoise->hp = 280;
     blastoise->forca = 180;
     blastoise->defesa = 200;
-    blastoise->tipo = strdup("Água");
+    blastoise->tipo = strdup("Agua");
+    blastoise->ataque[0] = 5;
+    blastoise->ataque[1] = 6;
+    blastoise->ataque[2] = 2;
+    blastoise->paralisado = 0;
+    blastoise->sono = 0;
+    blastoise->dormindo = 0;
+    blastoise->queimar = 0;
 
     return blastoise;
 }
@@ -225,6 +321,13 @@ Pokemon *venosauro()
     venosauro->forca = 160;
     venosauro->defesa = 160;
     venosauro->tipo = strdup("Planta");
+    venosauro->ataque[0] = 7;
+    venosauro->ataque[1] = 8;
+    venosauro->ataque[2] = 9;
+    venosauro->paralisado = 0;
+    venosauro->sono = 0;
+    venosauro->dormindo = 0;
+    venosauro->queimar = 0;
 
     return venosauro;
 }
@@ -239,6 +342,13 @@ Pokemon *steelix()
     steelix->forca = 170;
     steelix->defesa = 400;
     steelix->tipo = strdup("Metal");
+    steelix->ataque[0] = 10;
+    steelix->ataque[1] = 4;
+    steelix->ataque[2] = 11;
+    steelix->paralisado = 0;
+    steelix->sono = 0;
+    steelix->dormindo = 0;
+    steelix->queimar = 0;
 
     return steelix;
 }
@@ -252,7 +362,14 @@ Pokemon *mew()
     mew->hp = 320;
     mew->forca = 200;
     mew->defesa = 200;
-    mew->tipo = strdup("Psíquico");
+    mew->tipo = strdup("Psiquico");
+    mew->ataque[0] = 12;
+    mew->ataque[1] = 2;
+    mew->ataque[2] = 13;
+    mew->paralisado = 0;
+    mew->sono = 0;
+    mew->dormindo = 0;
+    mew->queimar = 0;
 
     return mew;
 }

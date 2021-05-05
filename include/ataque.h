@@ -2,10 +2,17 @@
 #define ATAQUE_H
 
 #include "pokemon.h"
+#include "batalha.h"
+
+// typedef struct ataque Ataque;
 
 void inicializaTabelaAtaques();
 
-int calculaDano(int poder, int forca, int defesa, int mt, int relacaoTipo);
+int calculaDano(int poder, int forca, int defesa, float mt, int relacaoTipo);
+
+char* retornaNomeAtaque(int ataque);
+
+float relacaoTipos(Pokemon* pokemonAtacamte, Pokemon* pokemonDefensor);
 
 void selecionaAtaque(int code, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 

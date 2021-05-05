@@ -16,11 +16,11 @@ void menuBatalha(Jogador *jogador)
     {
         while(retornaHpPokemon(pokemonAtual) > 0 && retornaHpPokemon(pokemonInimigo) > 0)
         {
-            printf("%s - %d  HP\n", retornaNomePokemon(pokemonInimigo), retornaHpPokemon(pokemonInimigo));
-            printf("%s - %d  HP\n\n", retornaNomePokemon(pokemonAtual), retornaHpPokemon(pokemonAtual));
+            printf("%s - %.0f %% HP\n", retornaNomePokemon(pokemonInimigo), retornaPocentagemHp(pokemonInimigo));
+            printf("%s - %.0f %% HP\n\n", retornaNomePokemon(pokemonAtual), retornaPocentagemHp(pokemonAtual));
             if(turnoJogador)
             {
-                imprimeMenuOpcoes(jogador);
+                imprimeMenuOpcoes(jogador, pokemonAtual);
                 do
                 {
                     scanf("%d", &opcao);
@@ -29,14 +29,15 @@ void menuBatalha(Jogador *jogador)
                 switch(opcao)
                 {
                     case 1:
-                        // SetterPokemonHp(pokemonInimigo, retornaHpPokemon(pokemonInimigo) - 100);
+                        selecionaAtaque(retornaNumAtaque(pokemonAtual, 0), pokemonAtual, pokemonInimigo);
                         break;
 
                     case 2:
-                        selecionaAtaque(1, pokemonAtual, pokemonInimigo);
+                        selecionaAtaque(retornaNumAtaque(pokemonAtual, 1), pokemonAtual, pokemonInimigo);
                         break;
 
                     case 3:
+                        selecionaAtaque(retornaNumAtaque(pokemonAtual, 2), pokemonAtual, pokemonInimigo);
                         break;
 
                     case 4:
@@ -50,14 +51,27 @@ void menuBatalha(Jogador *jogador)
             else
             {
                 opcao = numeroAleatorio(3);
-                // SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - 50);
+                switch(opcao)
+                {
+                    case 1:
+                        selecionaAtaque(retornaNumAtaque(pokemonInimigo, 0), pokemonInimigo, pokemonAtual);
+                        break;
+
+                    case 2:
+                        selecionaAtaque(retornaNumAtaque(pokemonInimigo, 1), pokemonInimigo, pokemonAtual);
+                        break;
+
+                    case 3:
+                        selecionaAtaque(retornaNumAtaque(pokemonInimigo, 2), pokemonInimigo, pokemonAtual);
+                        break;
+                }
                 turnoJogador = 1;
             }
             system("clear");
         }
         if(retornaHpPokemon(pokemonAtual) <= 0)
         {
-            SetterQtdPokemon(jogador, -1);
+            setterQtdPokemon(jogador, -1);
             if(retornaQtdPokemons(jogador) != 0)
             {
                 removePokemonListaJogador(jogador);
@@ -69,15 +83,15 @@ void menuBatalha(Jogador *jogador)
         else
         {
             destroiPokemon(pokemonInimigo);
-            if(probabilidade(chanceMew/128))
+            if(probabilidade(chanceMew/128.0))
             {
                 pokemonInimigo = selecionaPokemon('M');
                 chanceMew = 0;
             }
             else
                 pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
-            SetterQtdVitoria(jogador);
-            SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
+            setterQtdVitoria(jogador);
+            setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
             chanceMew++;
         }
     }
@@ -85,9 +99,9 @@ void menuBatalha(Jogador *jogador)
     printf("GAME OVER!!! Voce fez %d pontos\n", retornaVitorias(jogador));
 }
 
-void imprimeMenuOpcoes(Jogador *jogador)
+void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon)
 {
-    printf("1- Ataque 1\n2- Ataque 2\n3- Ataque 3\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaQtdPokebolas(jogador));
+    printf("1- %s\n2- %s\n3- %s\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaNomeAtaque(retornaNumAtaque(pokemon, 0)), retornaNomeAtaque(retornaNumAtaque(pokemon, 1)), retornaNomeAtaque(retornaNumAtaque(pokemon, 2)), retornaQtdPokebolas(jogador));
 }
 
 int numeroAleatorio(int randMax)
