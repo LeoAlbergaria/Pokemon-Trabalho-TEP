@@ -4,9 +4,10 @@ struct pokemon
 {
     char *nome;
     char *tipo;
-    //Ataque;
+    int ataque[3];
     int forca;
     int defesa;
+    int hpMax;
     int hp;
     char estado;
 };
@@ -137,6 +138,11 @@ int retornaHpPokemon(Pokemon* pokemon)
     return pokemon->hp;
 }
 
+int retornaHpMaxPokemon(Pokemon* pokemon)
+{
+    return pokemon->hpMax;
+}
+
 void SetterPokemonHp(Pokemon *pokemon, int hp)
 {
     pokemon->hp = hp;
@@ -145,10 +151,20 @@ void SetterPokemonHp(Pokemon *pokemon, int hp)
 void inicializaTabelaPokemons()
 {
   pokemons['P'] = pikachu;
+  pokemons['1'] = pikachu;
+
   pokemons['C'] = charizard;
+  pokemons['2'] = charizard;
+
   pokemons['B'] = blastoise;
+  pokemons['3'] = blastoise;
+
   pokemons['V'] = venosauro;
+  pokemons['4'] = venosauro;
+
   pokemons['S'] = steelix;
+  pokemons['5'] = steelix;
+  
   pokemons['M'] = mew;
 }
 
@@ -162,6 +178,7 @@ Pokemon *pikachu()
     Pokemon* pikachu = (Pokemon*)malloc(sizeof(Pokemon));
 
     pikachu->nome = strdup("Pikachu");
+    pikachu->hpMax = 200;
     pikachu->hp = 200;
     pikachu->forca = 110;
     pikachu->defesa = 100;
@@ -175,6 +192,7 @@ Pokemon *charizard()
     Pokemon* charizard = (Pokemon*)malloc(sizeof(Pokemon));
 
     charizard->nome = strdup("Charizard");
+    charizard->hpMax = 260;
     charizard->hp = 260;
     charizard->forca = 160;
     charizard->defesa = 150;
@@ -188,6 +206,7 @@ Pokemon *blastoise()
     Pokemon* blastoise = (Pokemon*)malloc(sizeof(Pokemon));
 
     blastoise->nome = strdup("Blastoise");
+    blastoise->hpMax = 280;
     blastoise->hp = 280;
     blastoise->forca = 180;
     blastoise->defesa = 200;
@@ -201,6 +220,7 @@ Pokemon *venosauro()
     Pokemon* venosauro = (Pokemon*)malloc(sizeof(Pokemon));
 
     venosauro->nome = strdup("Venosauro");
+    venosauro->hpMax = 300;
     venosauro->hp = 300;
     venosauro->forca = 160;
     venosauro->defesa = 160;
@@ -214,6 +234,7 @@ Pokemon *steelix()
     Pokemon* steelix = (Pokemon*)malloc(sizeof(Pokemon));
 
     steelix->nome = strdup("Steelix");
+    steelix->hpMax = 280;
     steelix->hp = 280;
     steelix->forca = 170;
     steelix->defesa = 400;
@@ -227,6 +248,7 @@ Pokemon *mew()
     Pokemon* mew = (Pokemon*)malloc(sizeof(Pokemon));
 
     mew->nome = strdup("Mew");
+    mew->hpMax = 320;
     mew->hp = 320;
     mew->forca = 200;
     mew->defesa = 200;

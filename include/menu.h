@@ -6,6 +6,7 @@
 #include <string.h>
 
 #include "jogador.h"
+#include "batalha.h"
 
 void menuPrincipal();
 

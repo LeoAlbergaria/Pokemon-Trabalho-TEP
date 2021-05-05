@@ -94,7 +94,7 @@ Pokemon *retornaListaJogador(Jogador *jogador)
     return retornaPokemon(jogador->listaPokemon);
 }
 
-int retornaPokebolas(Jogador *jogador)
+int retornaQtdPokebolas(Jogador *jogador)
 {
     return jogador->qtdPokebolas;
 }

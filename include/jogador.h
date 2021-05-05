@@ -24,7 +24,7 @@ char *retornaNome(Jogador *jogador);
 
 Pokemon *retornaListaJogador(Jogador *jogador);
 
-int retornaPokebolas(Jogador *jogador);
+int retornaQtdPokebolas(Jogador *jogador);
 
 int retornaQtdPokemons(Jogador *jogador);
 

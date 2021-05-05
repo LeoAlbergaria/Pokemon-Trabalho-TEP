@@ -7,7 +7,7 @@
 
 typedef struct pokemon Pokemon;
 
-typedef struct listaPokemon ListaPokemon;
+typedef struct listaPokemon ListaPokemon; 
 
 ListaPokemon *iniciaLista(Pokemon *pokemon);
 
@@ -30,6 +30,8 @@ char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon);
 Pokemon *retornaPokemon(ListaPokemon* listaPokemon);
 
 int retornaHpPokemon(Pokemon* pokemon);
+
+int retornaHpMaxPokemon(Pokemon* pokemon);
 
 void SetterPokemonHp(Pokemon *pokemon, int hp);
 

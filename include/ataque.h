@@ -1,30 +1,40 @@
 #ifndef ATAQUE_H
 #define ATAQUE_H
 
-void choqueDoTrovao(Pokemon *pokemon);
+#include "pokemon.h"
 
-void ondaDeChoque(Pokemon *pokemon);
+void inicializaTabelaAtaques();
 
-void bater(Pokemon *pokemon);
+int calculaDano(int poder, int forca, int defesa, int mt, int relacaoTipo);
 
-void lancaChamas(Pokemon *pokemon);
+void selecionaAtaque(int code, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void armaDeAgua(Pokemon *pokemon);
+void choqueDoTrovao(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void proteger(Pokemon *pokemon);
+void ondaDeChoque(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void poDeSono(Pokemon *pokemon);
+void bater(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void bombaDeSemente(Pokemon *pokemon);
+void lancaChamas(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void doisGumes(Pokemon *pokemon);
+void dormir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void raboDeFerro(Pokemon *pokemon);
+void armaDeAgua(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void cavar(Pokemon *pokemon);
+void proteger(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void metronomo(Pokemon *pokemon);
+void poDeSono(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
-void autoDestruir(Pokemon *pokemon);
+void bombaDeSemente(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+
+void doisGumes(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+
+void raboDeFerro(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+
+void cavar(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+
+void metronomo(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+
+void autoDestruir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
 #endif

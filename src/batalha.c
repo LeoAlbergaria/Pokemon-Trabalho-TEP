@@ -2,9 +2,14 @@
 
 void menuBatalha(Jogador *jogador)
 {
+    inicializaTabelaAtaques();
     int turnoJogador = 1, opcao;
-    Pokemon *pokemonInimigo = selecionaPokemon('C');
+
+    int chanceMew = 0, chancePokebola;
+
+    Pokemon *pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
+
     system("clear");
     printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
     while(pokemonAtual != NULL)
@@ -24,10 +29,11 @@ void menuBatalha(Jogador *jogador)
                 switch(opcao)
                 {
                     case 1:
-                        SetterPokemonHp(pokemonInimigo, retornaHpPokemon(pokemonInimigo) - 100);
+                        // SetterPokemonHp(pokemonInimigo, retornaHpPokemon(pokemonInimigo) - 100);
                         break;
 
                     case 2:
+                        selecionaAtaque(1, pokemonAtual, pokemonInimigo);
                         break;
 
                     case 3:
@@ -43,7 +49,8 @@ void menuBatalha(Jogador *jogador)
             }
             else
             {
-                SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - 50);
+                opcao = numeroAleatorio(3);
+                // SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - 50);
                 turnoJogador = 1;
             }
             system("clear");
@@ -62,9 +69,16 @@ void menuBatalha(Jogador *jogador)
         else
         {
             destroiPokemon(pokemonInimigo);
-            pokemonInimigo = selecionaPokemon('P');
+            if(probabilidade(chanceMew/128))
+            {
+                pokemonInimigo = selecionaPokemon('M');
+                chanceMew = 0;
+            }
+            else
+                pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
             SetterQtdVitoria(jogador);
             SetterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
+            chanceMew++;
         }
     }
     destroiPokemon(pokemonInimigo);
@@ -73,5 +87,20 @@ void menuBatalha(Jogador *jogador)
 
 void imprimeMenuOpcoes(Jogador *jogador)
 {
-    printf("1- Ataque 1\n2- Ataque 2\n3- Ataque 3\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaPokebolas(jogador));
+    printf("1- Ataque 1\n2- Ataque 2\n3- Ataque 3\n4- Pokebolas (%d disponiveis)\n5- Fugir\n", retornaQtdPokebolas(jogador));
+}
+
+int numeroAleatorio(int randMax)
+{
+    int aleatorio =  rand() % randMax + 1;
+    return aleatorio;
+}
+
+int probabilidade(float probabilidade)
+{
+    float aleatorio = (float)rand()/(float)(RAND_MAX);
+    if(aleatorio <= probabilidade)
+        return 1;
+    else
+        return 0;
 }
