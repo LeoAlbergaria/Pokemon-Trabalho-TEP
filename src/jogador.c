@@ -84,6 +84,12 @@ void destroiJogador(Jogador *jogador)
     free(jogador);
 }
 
+void capturaPokemon(Jogador *jogador, Pokemon *pokemon)
+{
+    jogador->celulaAtual = inserePokemon(jogador->celulaAtual, selecionaPokemon(retornaNomePokemon(pokemon)[0]));
+    jogador->qtdPokemons++;
+}
+
 char *retornaNome(Jogador *jogador)
 {
     return jogador->nome;
@@ -117,4 +123,9 @@ void setterQtdVitoria(Jogador *jogador)
 void setterQtdPokemon(Jogador *jogador, int qtd)
 {
     jogador->qtdPokemons += qtd;
+}
+
+void setterQtdPokebolas(Jogador *jogador, int qtd)
+{
+    jogador->qtdPokebolas += qtd;
 }

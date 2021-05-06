@@ -20,6 +20,8 @@ void removePokemonListaJogador(Jogador *jogador);
 
 void destroiJogador(Jogador *jogador);
 
+void capturaPokemon(Jogador *jogador, Pokemon *pokemon);
+
 char *retornaNome(Jogador *jogador);
 
 Pokemon *retornaListaJogador(Jogador *jogador);
@@ -33,5 +35,7 @@ int retornaVitorias(Jogador *jogador);
 void setterQtdVitoria(Jogador *jogador);
 
 void setterQtdPokemon(Jogador *jogador, int qtd);
+
+void setterQtdPokebolas(Jogador *jogador, int qtd);
 
 #endif

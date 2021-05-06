@@ -4,8 +4,6 @@
 #include "pokemon.h"
 #include "batalha.h"
 
-// typedef struct ataque Ataque;
-
 void inicializaTabelaAtaques();
 
 float calculaDano(int poder, int forca, int defesa, float mt, float relacaoTipo);

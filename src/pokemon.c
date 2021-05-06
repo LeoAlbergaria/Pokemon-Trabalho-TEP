@@ -287,6 +287,8 @@ void setterProtegido(Pokemon *pokemon, int turnos)
 void setterPokemonHp(Pokemon *pokemon, float hp)
 {
     pokemon->hp = hp;
+    if(pokemon->hp < 0)
+        pokemon->hp = 0;
     if(pokemon->hp > pokemon->hpMax)
         pokemon->hp = pokemon->hpMax;
 }

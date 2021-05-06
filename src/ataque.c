@@ -99,15 +99,18 @@ void choqueDoTrovao(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 40;
     float mt = 1.5;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     if(probabilidade(1/10.0))
-        setterParalisado(pokemonDefensor, 1);
+        if(retornaProtegido(pokemonDefensor) == 0)
+            setterParalisado(pokemonDefensor, 1);
     imprimeLogAtaque(pokemonAtacante, 0);
 }
 
 void ondaDeChoque(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    setterParalisado(pokemonDefensor, 1);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterParalisado(pokemonDefensor, 1);
     imprimeLogAtaque(pokemonAtacante, 1);
 }
 
@@ -129,13 +132,15 @@ void lancaChamas(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     if(retornaProtegido(pokemonDefensor) == 0)
         setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     if(probabilidade(1/10.0))
-        setterQueimar(pokemonDefensor, 1);
+        if(retornaProtegido(pokemonDefensor) == 0)
+            setterQueimar(pokemonDefensor, 1);
     imprimeLogAtaque(pokemonAtacante, 3);
 }
 
 void dormir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    setterDormindo(pokemonAtacante, 3);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterDormindo(pokemonAtacante, 3);
     imprimeLogAtaque(pokemonAtacante, 4);
 }
 
@@ -158,7 +163,8 @@ void proteger(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 
 void poDeSono(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    setterSono(pokemonDefensor, numeroAleatorio(3));
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterSono(pokemonDefensor, numeroAleatorio(3));
     imprimeLogAtaque(pokemonAtacante, 7);
 }
 
@@ -219,7 +225,7 @@ void metronomo(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int numeroAtaque = numeroAleatorio(14) - 1;
     if(retornaProtegido(pokemonDefensor) == 0)
         selecionaAtaque(numeroAtaque, pokemonAtacante, pokemonDefensor);
-    if(numeroAleatorio != 12)
+    if(numeroAtaque != 12)
         imprimeLogAtaque(pokemonAtacante, 12);
 }
 

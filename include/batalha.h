@@ -16,6 +16,8 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
 
 void turnoInimigo(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
+void imprimeVidaBatalha(Pokemon *pokemonAtual, Pokemon *pokemonInimigo);
+
 int numeroAleatorio(int randMax);
 
 int probabilidade(float probabilidade);
