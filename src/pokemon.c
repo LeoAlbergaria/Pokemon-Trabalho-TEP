@@ -9,10 +9,13 @@ struct pokemon
     int defesa;
     float hpMax;
     float hp;
+    //status
     int paralisado;
     int sono;
     int dormindo;
     int queimar;
+    int cavar;
+    int protegido;
 };
 
 struct listaPokemon
@@ -197,6 +200,16 @@ int retornaParalisado(Pokemon* pokemon)
     return pokemon->paralisado;
 }
 
+int retornaCavar(Pokemon* pokemon)
+{
+    return pokemon->cavar;
+}
+
+int retornaProtegido(Pokemon* pokemon)
+{
+    return pokemon->protegido;
+}
+
 void setterDormindo(Pokemon *pokemon, int turnos)
 {
     if(turnos > pokemon->dormindo)
@@ -220,6 +233,18 @@ void setterParalisado(Pokemon *pokemon, int turnos)
 {
     if(turnos > pokemon->paralisado)
         pokemon->paralisado = turnos;
+}
+
+void setterCavar(Pokemon *pokemon, int turnos)
+{
+    if(turnos > pokemon->cavar)
+        pokemon->cavar = turnos;
+}
+
+void setterProtegido(Pokemon *pokemon, int turnos)
+{
+    if(turnos > pokemon->protegido)
+        pokemon->protegido = turnos;
 }
 
 void setterPokemonHp(Pokemon *pokemon, float hp)

@@ -10,7 +10,6 @@ void menuBatalha(Jogador *jogador)
     Pokemon *pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
 
-    system("clear");
     printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
     while(pokemonAtual != NULL)
     {
@@ -67,7 +66,6 @@ void menuBatalha(Jogador *jogador)
                 }
                 turnoJogador = 1;
             }
-            system("clear");
         }
         if(retornaHpPokemon(pokemonAtual) <= 0)
         {

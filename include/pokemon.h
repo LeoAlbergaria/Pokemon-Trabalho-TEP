@@ -51,6 +51,10 @@ int retornaQueimar(Pokemon* pokemon);
 
 int retornaParalisado(Pokemon* pokemon);
 
+int retornaCavar(Pokemon* pokemon);
+
+int retornaProtegido(Pokemon* pokemon);
+
 void setterDormindo(Pokemon *pokemon, int turnos);
 
 void setterSono(Pokemon *pokemon, int turnos);
@@ -60,6 +64,10 @@ void setterQueimar(Pokemon *pokemon, int turnos);
 void setterParalisado(Pokemon *pokemon, int turnos);
 
 void setterPokemonHp(Pokemon *pokemon, float hp);
+
+void setterCavar(Pokemon *pokemon, int turnos);
+
+void setterProtegido(Pokemon *pokemon, int turnos);
 
 void inicializaTabelaPokemons();
 
