@@ -123,6 +123,43 @@ int converteTipo(Pokemon *pokemon)
     if(strcmp(pokemon->tipo, "Metal") == 0) return 5;
 }
 
+void retiraEfeitosPokemon(Pokemon *pokemon)
+{
+    if(pokemon->paralisado > 0)
+        pokemon->paralisado--;
+    if(pokemon->sono > 0)
+        pokemon->sono--;
+    if(pokemon->dormindo > 0)
+    {
+        pokemon->dormindo--;
+        if(pokemon->dormindo == 0)
+            pokemon->hp = pokemon->hpMax;
+    }
+    if(pokemon->queimar > 0)
+        pokemon->queimar--;
+    if(pokemon->cavar > 0)
+        pokemon->cavar--;
+    if(pokemon->protegido > 0)
+        pokemon->protegido--;
+}
+
+void imprimeEfeitosPokemon(Pokemon *pokemon)
+{
+    printf("(");
+    if(pokemon->paralisado > 0) printf(" Paralisado ");
+    if(pokemon->sono > 0 || pokemon->dormindo > 0) printf(" Dormindo ");
+    if(pokemon->queimar > 0) printf(" Queimando ");
+    if(pokemon->cavar > 0 || pokemon->protegido > 0) printf(" Protegido ");
+    printf(")\n");
+}
+
+int verificaEfeitos(Pokemon *pokemon)
+{
+    if(retornaParalisado(pokemon) == 0 && retornaDomindo(pokemon) == 0 && retornaSono(pokemon) == 0 && retornaCavar(pokemon) == 0)
+        return 1;
+    return 0;
+}
+
 char *retornaNomePokemon(Pokemon *pokemon)
 {
     return pokemon->nome;
@@ -250,6 +287,8 @@ void setterProtegido(Pokemon *pokemon, int turnos)
 void setterPokemonHp(Pokemon *pokemon, float hp)
 {
     pokemon->hp = hp;
+    if(pokemon->hp > pokemon->hpMax)
+        pokemon->hp = pokemon->hpMax;
 }
 
 void inicializaTabelaPokemons()
@@ -294,6 +333,8 @@ Pokemon *pikachu()
     pikachu->sono = 0;
     pikachu->dormindo = 0;
     pikachu->queimar = 0;
+    pikachu->cavar = 0;
+    pikachu->protegido = 0;
 
     return pikachu;
 }
@@ -315,6 +356,8 @@ Pokemon *charizard()
     charizard->sono = 0;
     charizard->dormindo = 0;
     charizard->queimar = 0;
+    charizard->cavar = 0;
+    charizard->protegido = 0;
 
     return charizard;
 }
@@ -336,6 +379,8 @@ Pokemon *blastoise()
     blastoise->sono = 0;
     blastoise->dormindo = 0;
     blastoise->queimar = 0;
+    blastoise->cavar = 0;
+    blastoise->protegido = 0;
 
     return blastoise;
 }
@@ -357,6 +402,8 @@ Pokemon *venosauro()
     venosauro->sono = 0;
     venosauro->dormindo = 0;
     venosauro->queimar = 0;
+    venosauro->cavar = 0;
+    venosauro->protegido = 0;
 
     return venosauro;
 }
@@ -378,6 +425,8 @@ Pokemon *steelix()
     steelix->sono = 0;
     steelix->dormindo = 0;
     steelix->queimar = 0;
+    steelix->cavar = 0;
+    steelix->protegido = 0;
 
     return steelix;
 }
@@ -399,6 +448,8 @@ Pokemon *mew()
     mew->sono = 0;
     mew->dormindo = 0;
     mew->queimar = 0;
+    mew->cavar = 0;
+    mew->protegido = 0;
 
     return mew;
 }

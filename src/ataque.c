@@ -89,6 +89,11 @@ float relacaoTipos(Pokemon* pokemonAtacante, Pokemon* pokemonDefensor)
     return relacao[linha][coluna];
 }
 
+void imprimeLogAtaque(Pokemon *pokemon, int numeroAtaque)
+{
+    printf("%s usou %s\n\n", retornaNomePokemon(pokemon), retornaNomeAtaque(numeroAtaque));
+}
+
 void choqueDoTrovao(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
     int poder = 40;
@@ -97,11 +102,13 @@ void choqueDoTrovao(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     if(probabilidade(1/10.0))
         setterParalisado(pokemonDefensor, 1);
+    imprimeLogAtaque(pokemonAtacante, 0);
 }
 
 void ondaDeChoque(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
     setterParalisado(pokemonDefensor, 1);
+    imprimeLogAtaque(pokemonAtacante, 1);
 }
 
 void bater(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -109,7 +116,9 @@ void bater(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 40;
     float mt = 1.0;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    imprimeLogAtaque(pokemonAtacante, 2);
 }
 
 void lancaChamas(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -117,14 +126,17 @@ void lancaChamas(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 90;
     float mt = 1.5;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     if(probabilidade(1/10.0))
         setterQueimar(pokemonDefensor, 1);
+    imprimeLogAtaque(pokemonAtacante, 3);
 }
 
 void dormir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
     setterDormindo(pokemonAtacante, 3);
+    imprimeLogAtaque(pokemonAtacante, 4);
 }
 
 
@@ -133,17 +145,21 @@ void armaDeAgua(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 40;
     float mt = 1.5;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    imprimeLogAtaque(pokemonAtacante, 5);
 }
 
 void proteger(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    setterProtegido(pokemonAtacante, 1);
+    setterProtegido(pokemonAtacante, 2);
+    imprimeLogAtaque(pokemonAtacante, 6);
 }
 
 void poDeSono(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
     setterSono(pokemonDefensor, numeroAleatorio(3));
+    imprimeLogAtaque(pokemonAtacante, 7);
 }
 
 void bombaDeSemente(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -151,7 +167,9 @@ void bombaDeSemente(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 80;
     float mt = 1.5;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    imprimeLogAtaque(pokemonAtacante, 8);
 }
 
 void doisGumes(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -159,8 +177,10 @@ void doisGumes(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 120;
     float mt = 1.0;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     setterPokemonHp(pokemonAtacante, retornaHpPokemon(pokemonAtacante) - (dano/3));
+    imprimeLogAtaque(pokemonAtacante, 9);
 }
 
 void raboDeFerro(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -168,7 +188,9 @@ void raboDeFerro(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 100;
     float mt = 1.5;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    imprimeLogAtaque(pokemonAtacante, 10);
 }
 
 void cavar(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -179,21 +201,26 @@ void cavar(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     if(retornaCavar(pokemonAtacante))
     {
         dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+        if(retornaProtegido(pokemonDefensor) == 0)
+            setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
         setterCavar(pokemonAtacante, 0);
         setterProtegido(pokemonAtacante, 0);
     }
     else
     {
-        setterCavar(pokemonAtacante, 2);
-        setterProtegido(pokemonAtacante, 2);
+        setterCavar(pokemonAtacante, 3);
+        setterProtegido(pokemonAtacante, 3);
     }
+    imprimeLogAtaque(pokemonAtacante, 11);
 }
 
 void metronomo(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    int ataque = numeroAleatorio(14) - 1;
-    selecionaAtaque(ataque, pokemonAtacante, pokemonDefensor);
+    int numeroAtaque = numeroAleatorio(14) - 1;
+    if(retornaProtegido(pokemonDefensor) == 0)
+        selecionaAtaque(numeroAtaque, pokemonAtacante, pokemonDefensor);
+    if(numeroAleatorio != 12)
+        imprimeLogAtaque(pokemonAtacante, 12);
 }
 
 void autoDestruir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
@@ -201,6 +228,8 @@ void autoDestruir(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
     int poder = 200;
     float mt = 1.0;
     float dano = calculaDano(poder, retornaForca(pokemonAtacante), retornaDefesa(pokemonDefensor), mt, relacaoTipos(pokemonAtacante, pokemonDefensor));
-    setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
+    if(retornaProtegido(pokemonDefensor) == 0)
+        setterPokemonHp(pokemonDefensor, retornaHpPokemon(pokemonDefensor) - dano);
     setterPokemonHp(pokemonAtacante, 0);
+    imprimeLogAtaque(pokemonAtacante, 13);
 }

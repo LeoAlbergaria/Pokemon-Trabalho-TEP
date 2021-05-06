@@ -16,6 +16,8 @@ float relacaoTipos(Pokemon* pokemonAtacamte, Pokemon* pokemonDefensor);
 
 void selecionaAtaque(int code, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
+void imprimeLogAtaque(Pokemon *pokemon, int numeroAtaque);
+
 void choqueDoTrovao(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
 void ondaDeChoque(Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);

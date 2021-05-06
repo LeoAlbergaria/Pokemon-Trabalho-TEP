@@ -51,7 +51,7 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
         {
             scanf("%d", &opcao);
         }
-        while (opcao <= 0 && opcao >= qtdIniciais);
+        while (opcao <= 0 || opcao > qtdIniciais);
 
         char *nomePokemon = retornaNomePokemonLista(pokemonsIniciais, opcao - 1);
 
