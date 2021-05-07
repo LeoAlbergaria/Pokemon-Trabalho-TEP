@@ -75,14 +75,17 @@ void menuBatalha(Jogador *jogador)
             }
             else    
                 break;
+            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
         }
         else
         {
             printf("%s venceu!\n", retornaNome(jogador));
             getchar();
-            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
+
             chanceMew++;
             chancePokebola++;
+            setterQtdVitoria(jogador);
+
             destroiPokemon(pokemonInimigo);
 
             if(probabilidade(chancePokebola/12.0))
@@ -95,7 +98,6 @@ void menuBatalha(Jogador *jogador)
             else
                 pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
 
-            setterQtdVitoria(jogador);
             setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
             resetaEfeitosPokemon(pokemonAtual);
             printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
@@ -115,13 +117,13 @@ void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon)
 
 void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor)
 {
-    int opcao;
+    char opcao[10];
     do
     {
-        scanf("%d", &opcao);
-    } while((opcao < 1 || opcao > 5) || (opcao == 4 && retornaQtdPokebolas(jogador) == 0));
+        scanf("%s", opcao);   
+    } while((atoi(opcao) < 1 || atoi(opcao) > 5) || (atoi(opcao) == 4 && retornaQtdPokebolas(jogador) == 0));
 
-    switch(opcao)
+    switch(atoi(opcao))
     {
         case 1:
             selecionaAtaque(retornaNumAtaque(pokemonAtacante, 0), pokemonAtacante, pokemonDefensor);
@@ -154,6 +156,16 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
             break;
 
         case 5:
+            // printf("Tentativa de Fuga\n");
+            // if(probabilidade(//))
+            // {
+            //     printf("Sucesso!\n");
+            //     setterPokemonHp(pokemonDefensor, 0);
+            // }
+            // else
+            // {
+            //     printf("Falha!\n");
+            // }
             break;
     }
 }

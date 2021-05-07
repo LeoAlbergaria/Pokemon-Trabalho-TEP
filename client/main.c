@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[])
 {
-  srand(45);
+  srand(1150);
   menuPrincipal();
   return 0;
 }

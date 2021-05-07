@@ -41,7 +41,8 @@ int verificaNome(char *nome)
 
 void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
 {
-    int qtdIniciais = 6, opcao;
+    int qtdIniciais = 6;
+    char opcao[10];
     while(jogador->qtdPokemons < 3)
     {
         system("clear");
@@ -49,11 +50,11 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
         imprimeListaPokemon(pokemonsIniciais);
         do
         {
-            scanf("%d", &opcao);
+            scanf("%s", opcao);
         }
-        while (opcao <= 0 || opcao > qtdIniciais);
+        while (atoi(opcao) <= 0 || atoi(opcao) > qtdIniciais);
 
-        char *nomePokemon = retornaNomePokemonLista(pokemonsIniciais, opcao - 1);
+        char *nomePokemon = retornaNomePokemonLista(pokemonsIniciais, atoi(opcao) - 1);
 
         if(qtdIniciais == 6)
         {
@@ -64,7 +65,7 @@ void escolherIniciais(Jogador *jogador, ListaPokemon *pokemonsIniciais)
         {
             jogador->celulaAtual = inserePokemon(jogador->celulaAtual, selecionaPokemon(nomePokemon[0]));
         }
-        pokemonsIniciais = removePokemonLista(pokemonsIniciais, opcao-1);
+        pokemonsIniciais = removePokemonLista(pokemonsIniciais, atoi(opcao) - 1);
         jogador->qtdPokemons++;
         qtdIniciais--;
     }
