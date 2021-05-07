@@ -11,11 +11,11 @@ void menuBatalha(Jogador *jogador)
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
 
     printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
+    imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
     while(pokemonAtual != NULL)
     {
         while(retornaHpPokemon(pokemonAtual) > 0 && retornaHpPokemon(pokemonInimigo) > 0)
         {
-            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
             if(turnoJogador)
             {
                 if(retornaCavar(pokemonAtual) == 1)
@@ -28,7 +28,10 @@ void menuBatalha(Jogador *jogador)
                     {
                         imprimeMenuOpcoes(jogador, pokemonAtual);
                         turnoAtual(jogador, pokemonAtual, pokemonInimigo);
+                        getchar();
                     }
+                    else
+                        imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
                 }
                 if(retornaQueimar(pokemonAtual))
                     setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - (retornaHpMaxPokemon(pokemonAtual)/16));
@@ -47,18 +50,21 @@ void menuBatalha(Jogador *jogador)
                     if(verificaEfeitos(pokemonInimigo))
                     {
                         turnoInimigo(jogador, pokemonInimigo, pokemonAtual);
-                    }   
+                    }
+                    else
+                        imprimeVidaBatalha(pokemonAtual, pokemonInimigo);   
                 }
                 if(retornaQueimar(pokemonAtual))
                     setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) - (retornaHpMaxPokemon(pokemonAtual)/16));
                 retiraEfeitosPokemon(pokemonInimigo);
+
+                getchar();
 
                 turnoJogador = 1;
             }
         }
         if(retornaHpPokemon(pokemonAtual) <= 0)
         {
-            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
             printf("%s perdeu!\n", retornaNome(jogador));
             getchar();
             setterQtdPokemon(jogador, -1);
@@ -72,12 +78,13 @@ void menuBatalha(Jogador *jogador)
         }
         else
         {
-            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
             printf("%s venceu!\n", retornaNome(jogador));
             getchar();
+            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
             chanceMew++;
             chancePokebola++;
             destroiPokemon(pokemonInimigo);
+
             if(probabilidade(chancePokebola/12.0))
                 setterQtdPokebolas(jogador, 1);
             if(probabilidade(chanceMew/128.0))
@@ -87,9 +94,12 @@ void menuBatalha(Jogador *jogador)
             }
             else
                 pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
+
             setterQtdVitoria(jogador);
             setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
+            resetaEfeitosPokemon(pokemonAtual);
             printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
+            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
 
             turnoJogador = 1;
         }
@@ -115,14 +125,17 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
     {
         case 1:
             selecionaAtaque(retornaNumAtaque(pokemonAtacante, 0), pokemonAtacante, pokemonDefensor);
+            imprimeVidaBatalha(pokemonAtacante, pokemonDefensor);
             break;
 
         case 2:
             selecionaAtaque(retornaNumAtaque(pokemonAtacante, 1), pokemonAtacante, pokemonDefensor);
+            imprimeVidaBatalha(pokemonAtacante, pokemonDefensor);
             break;
 
         case 3:
             selecionaAtaque(retornaNumAtaque(pokemonAtacante, 2), pokemonAtacante, pokemonDefensor);
+            imprimeVidaBatalha(pokemonAtacante, pokemonDefensor);
             break;
 
         case 4:
@@ -138,7 +151,6 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
                 printf("Falha!\n");
             }
             setterQtdPokebolas(jogador, -1);
-            getchar();
             break;
 
         case 5:
@@ -165,6 +177,7 @@ void turnoInimigo(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDe
             selecionaAtaque(retornaNumAtaque(pokemonAtacante, 2), pokemonAtacante, pokemonDefensor);
             break;
     }
+    imprimeVidaBatalha(pokemonDefensor, pokemonAtacante);
 }
 
 void imprimeVidaBatalha(Pokemon *pokemonAtual, Pokemon *pokemonInimigo)
@@ -174,7 +187,6 @@ void imprimeVidaBatalha(Pokemon *pokemonAtual, Pokemon *pokemonInimigo)
     printf("%s - %.1f%% HP", retornaNomePokemon(pokemonAtual), retornaPocentagemHp(pokemonAtual));
     imprimeEfeitosPokemon(pokemonAtual);
     printf("\n");
-    getchar();
 }
 
 int numeroAleatorio(int randMax)

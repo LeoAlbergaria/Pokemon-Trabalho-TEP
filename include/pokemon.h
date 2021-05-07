@@ -31,6 +31,8 @@ void imprimeEfeitosPokemon(Pokemon *pokemon);
 
 int verificaEfeitos(Pokemon *pokemon);
 
+void resetaEfeitosPokemon(Pokemon *pokemon);
+
 char *retornaNomePokemon(Pokemon *pokemon);
 
 char* retornaNomePokemonLista(ListaPokemon *lista, int posicaoPokemon);

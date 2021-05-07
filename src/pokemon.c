@@ -160,6 +160,16 @@ int verificaEfeitos(Pokemon *pokemon)
     return 0;
 }
 
+void resetaEfeitosPokemon(Pokemon *pokemon)
+{
+    pokemon->paralisado = 0;
+    pokemon->sono = 0;
+    pokemon->dormindo = 0;
+    pokemon->queimar = 0;
+    pokemon->cavar = 0;
+    pokemon->protegido = 0;
+}
+
 char *retornaNomePokemon(Pokemon *pokemon)
 {
     return pokemon->nome;
