@@ -5,7 +5,7 @@ void menuBatalha(Jogador *jogador)
     inicializaTabelaAtaques();
     int turnoJogador = 1;
 
-    int chanceMew = 0, chancePokebola = 0;
+    float chanceMew = 0, chancePokebola = 0;
 
     Pokemon *pokemonInimigo = selecionaPokemon(numeroAleatorio(5) + 48);
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
@@ -142,7 +142,7 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
 
         case 4:
             printf("Tentativa de captura\n");
-            if(probabilidade(retornaHpMaxPokemon(pokemonDefensor)/retornaHpPokemon(pokemonDefensor)/20))
+            if(probabilidade(retornaHpMaxPokemon(pokemonDefensor)/retornaHpPokemon(pokemonDefensor)/20.0))
             {
                 capturaPokemon(jogador, pokemonDefensor);
                 printf("Sucesso!\n");
@@ -156,16 +156,16 @@ void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefe
             break;
 
         case 5:
-            // printf("Tentativa de Fuga\n");
-            // if(probabilidade(//))
-            // {
-            //     printf("Sucesso!\n");
-            //     setterPokemonHp(pokemonDefensor, 0);
-            // }
-            // else
-            // {
-            //     printf("Falha!\n");
-            // }
+            printf("Tentativa de Fuga\n");
+            if(probabilidade(1/16.0))
+            {
+                printf("Sucesso!\n");
+                setterPokemonHp(pokemonDefensor, 0);
+            }
+            else
+            {
+                printf("Falha!\n");
+            }
             break;
     }
 }
