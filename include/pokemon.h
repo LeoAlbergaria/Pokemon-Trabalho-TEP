@@ -93,4 +93,6 @@ Pokemon *steelix();
 
 Pokemon *mew();
 
+void desenhaPokemon(char letraPokemon);
+
 #endif

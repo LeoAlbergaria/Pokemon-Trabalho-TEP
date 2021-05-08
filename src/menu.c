@@ -37,7 +37,19 @@ void menuPrincipal()
 
 void imprimeMenuPrincipal()
 {
-  printf("1 - Jogar\n2 - Ranking\n3 - Sair\n");
+    printf("                                  ,'\\                          \n");
+    printf("    _.----.        ____         ,'  _\\   ___    ___     ____       \n");
+    printf("_,-'       `.     |    |  /`.   \\,-'    |   \\  /   |   |    \\  |`. \n");
+    printf("\\      __    \\    '-.  | /   `.  ___    |    \\/    |   '-.   \\ |  |\n");
+    printf(" \\.    \\ \\   |  __  |  |/    ,','_  `.  |          | __  |    \\|  |\n");
+    printf("   \\    \\/   /,' _`.|      ,' / / / /   |          ,' _`.|     |  |\n");
+    printf("    \\     ,-'/  /   \\    ,'   | \\/ / ,`.|         /  /   \\  |     |\n");
+    printf("     \\    \\ |   \\_/  |   `-.  \\    `'  /|  |    ||   \\_/  | |\\    |\n");
+    printf("      \\    \\ \\      /       `-.`.___,-' |  |\\  /| \\      /  | |   |\n");
+    printf("       \\    \\ `.__,'|  |`-._    `|      |__| \\/ |  `.__,'|  | |   |\n");
+    printf("        \\_.-'       |__|    `-._ |              '-.|     '-.| |   |\n");
+    printf("                                `'                            '-._|\n\n");
+    printf("1 - Jogar\n2 - Ranking\n3 - Sair\n");
 }
 
 void menuIniciais(Jogador *jogador)

@@ -11,6 +11,7 @@ void menuBatalha(Jogador *jogador)
     Pokemon *pokemonAtual = retornaListaJogador(jogador);
 
     printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
+    desenhaPokemon(retornaNomePokemon(pokemonInimigo)[0]);
     imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
     while(pokemonAtual != NULL)
     {
@@ -100,7 +101,8 @@ void menuBatalha(Jogador *jogador)
 
             setterPokemonHp(pokemonAtual, retornaHpPokemon(pokemonAtual) + 10);
             resetaEfeitosPokemon(pokemonAtual);
-            printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo));
+            printf("Um %s selvagem apareceu!!!\n\n", retornaNomePokemon(pokemonInimigo)); 
+            desenhaPokemon(retornaNomePokemon(pokemonInimigo)[0]);
             imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
 
             turnoJogador = 1;
