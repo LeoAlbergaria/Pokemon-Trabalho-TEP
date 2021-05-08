@@ -9,7 +9,7 @@ struct pokemon
     int defesa;
     float hpMax;
     float hp;
-    //status
+    //efeitos
     int paralisado;
     int sono;
     int dormindo;
@@ -135,8 +135,6 @@ void retiraEfeitosPokemon(Pokemon *pokemon)
         if(pokemon->dormindo == 0)
             pokemon->hp = pokemon->hpMax;
     }
-    if(pokemon->queimar > 0)
-        pokemon->queimar--;
     if(pokemon->cavar > 0)
         pokemon->cavar--;
     if(pokemon->protegido > 0)
@@ -472,18 +470,18 @@ void desenhaPokemon(char letraPokemon)
     {
         case 'C':
             printf(" ====================================================================\n");
-            printf("||                   -. \\, |                _                       ||\n");
-            printf("||                    `--Y.'      ___.                _             ||\n");
-            printf("||                         \\     L._, \\                _            ||\n");
-            printf("||               _.,        `.   <  <\\                _             ||\n");
-            printf("||             ,' '           `, `.   | \\            ( `            ||\n");
-            printf("||          ../, `.            `  |    .\\`.           \\ \\_          ||\n");
-            printf("||         ,' ,..  .           _.,'    ||\\l            )  '\".       ||\n");
-            printf("||        , ,'   \\           ,'.-.`-._,'  |           .  _._`.      ||\n");
-            printf("||      ,' /      \\ \\        `' ' `--/   | \\          / /   ..\\     ||\n");
-            printf("||    .'  /        \\ .         |\\__ - _ ,'` `        / /     `.`.   ||\n");
-            printf("||    |  '          ..         `-...-\"  |  `-'      / /        . `. ||\n");
-            printf("||    | /           |L__           |    |          / /          `. `||\n");
+            printf("||                   `--Y.'      ___.                _              ||\n");
+            printf("||                        \\     L._, \\                _             ||\n");
+            printf("||              _.,        `.   <  <\\                _              ||\n");
+            printf("||            ,' '           `, `.   | \\            ( `             ||\n");
+            printf("||         ../, `.            `  |    .\\`.           \\ \\_           ||\n");
+            printf("||        ,' ,..  .           _.,'    ||\\l            )  '\".        ||\n");
+            printf("||       , ,'   \\           ,'.-.`-._,'  |           .  _._`.       ||\n");
+            printf("||     ,' /      \\ \\        `' ' `--/   | \\          / /   ..\\      ||\n");
+            printf("||   .'  /        \\ .         |\\__ - _ ,'` `        / /     `.`.    ||\n");
+            printf("||   |  '          ..         `-...-\"  |  `-'      / /        . `.  ||\n");
+            printf("||   | /           |L__           |    |          / /          `. ` ||\n");
+            printf("||  , /            .   .          |    |         / /             ` `||\n");
             printf(" ====================================================================\n");
             printf("\n");
             break;

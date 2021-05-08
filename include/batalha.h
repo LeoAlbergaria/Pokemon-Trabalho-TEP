@@ -12,7 +12,7 @@ void menuBatalha();
 
 void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon);
 
-void turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+int turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
 void turnoInimigo(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
 
