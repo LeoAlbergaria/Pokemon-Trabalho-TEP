@@ -147,26 +147,26 @@ void retiraEfeitosPokemon(Pokemon *pokemon)
 
 void imprimeEfeitosPokemon(Pokemon *pokemon)
 {
-    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0 || pokemon->sono != 0)
         printf(" (");
     if(pokemon->paralisado > 0) printf(" Paralisado ");
     if(pokemon->sono > 0 || pokemon->dormindo > 0) printf(" Dormindo ");
     if(pokemon->queimar > 0) printf(" Queimando ");
     if(pokemon->cavar > 0 || pokemon->protegido > 0) printf(" Protegido ");
-    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0 || pokemon->sono != 0)
         printf(")");
     printf("\n");
 }
 
 void imprimeArquivoEfeitosPokemon(Pokemon *pokemon, FILE *log)
 {
-    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0 || pokemon->sono != 0)
         fprintf(log," (");
     if(pokemon->paralisado > 0) fprintf(log," Paralisado ");
     if(pokemon->sono > 0 || pokemon->dormindo > 0) fprintf(log," Dormindo ");
     if(pokemon->queimar > 0) fprintf(log," Queimando ");
     if(pokemon->cavar > 0 || pokemon->protegido > 0) fprintf(log," Protegido ");
-    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0 || pokemon->sono != 0)
         fprintf(log,")");
     fprintf(log, "\n");
 }
