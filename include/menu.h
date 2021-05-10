@@ -8,7 +8,7 @@
 #include "jogador.h"
 #include "batalha.h"
 
-void menuPrincipal();
+void menuPrincipal(char* arquivoPlacar, char* arquivoLog);
 
 void imprimeMenuPrincipal();
 

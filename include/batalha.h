@@ -8,15 +8,17 @@
 #include "jogador.h"
 #include "ataque.h"
 
-void menuBatalha();
+void menuBatalha(Jogador *jogador, FILE *log, int contadorPartidas);
 
 void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon);
 
-int turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+int turnoAtual(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor, FILE *log);
 
-void turnoInimigo(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor);
+void turnoInimigo(Jogador *jogador, Pokemon *pokemonAtacante, Pokemon *pokemonDefensor, FILE *log);
 
 void imprimeVidaBatalha(Pokemon *pokemonAtual, Pokemon *pokemonInimigo);
+
+void imprimeArquivoVidaBatalha(Pokemon *pokemonAtual, Pokemon *pokemonInimigo, FILE *log);
 
 int numeroAleatorio(int randMax);
 

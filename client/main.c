@@ -6,7 +6,12 @@
 
 int main(int argc, char *argv[])
 {
-  srand(10);
-  menuPrincipal();
+  if(argc != 4)
+    printf("ERRO!!! Parametros fora do padrao.");
+  else
+  {
+    srand(atoi(argv[3]));
+    menuPrincipal(argv[1], argv[2]);
+  }
   return 0;
 }

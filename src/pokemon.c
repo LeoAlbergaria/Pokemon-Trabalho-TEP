@@ -28,6 +28,10 @@ typedef Pokemon* (*fptrPokemon)();
 
 fptrPokemon pokemons[128] = {NULL};
 
+typedef void (*fptrDesenhaPokemon)();
+
+fptrDesenhaPokemon desenhaPokemons[128] = {NULL};
+
 ListaPokemon *iniciaLista(Pokemon *pokemon)
 {
     ListaPokemon *iniciais = (ListaPokemon*)malloc(sizeof(ListaPokemon));
@@ -143,12 +147,28 @@ void retiraEfeitosPokemon(Pokemon *pokemon)
 
 void imprimeEfeitosPokemon(Pokemon *pokemon)
 {
-    printf("(");
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+        printf(" (");
     if(pokemon->paralisado > 0) printf(" Paralisado ");
     if(pokemon->sono > 0 || pokemon->dormindo > 0) printf(" Dormindo ");
     if(pokemon->queimar > 0) printf(" Queimando ");
     if(pokemon->cavar > 0 || pokemon->protegido > 0) printf(" Protegido ");
-    printf(")\n");
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+        printf(")");
+    printf("\n");
+}
+
+void imprimeArquivoEfeitosPokemon(Pokemon *pokemon, FILE *log)
+{
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+        fprintf(log," (");
+    if(pokemon->paralisado > 0) fprintf(log," Paralisado ");
+    if(pokemon->sono > 0 || pokemon->dormindo > 0) fprintf(log," Dormindo ");
+    if(pokemon->queimar > 0) fprintf(log," Queimando ");
+    if(pokemon->cavar > 0 || pokemon->protegido > 0) fprintf(log," Protegido ");
+    if(pokemon->paralisado != 0 || pokemon->dormindo != 0 || pokemon->queimar != 0 || pokemon->protegido != 0)
+        fprintf(log,")");
+    fprintf(log, "\n");
 }
 
 int verificaEfeitos(Pokemon *pokemon)
@@ -464,114 +484,129 @@ Pokemon *mew()
     return mew;
 }
 
-void desenhaPokemon(char letraPokemon)
+void inicializaTabelaDesenhaPokemons()
 {
-    switch (letraPokemon)
-    {
-        case 'C':
-            printf(" ====================================================================\n");
-            printf("||                   `--Y.'      ___.                _              ||\n");
-            printf("||                        \\     L._, \\                _             ||\n");
-            printf("||              _.,        `.   <  <\\                _              ||\n");
-            printf("||            ,' '           `, `.   | \\            ( `             ||\n");
-            printf("||         ../, `.            `  |    .\\`.           \\ \\_           ||\n");
-            printf("||        ,' ,..  .           _.,'    ||\\l            )  '\".        ||\n");
-            printf("||       , ,'   \\           ,'.-.`-._,'  |           .  _._`.       ||\n");
-            printf("||     ,' /      \\ \\        `' ' `--/   | \\          / /   ..\\      ||\n");
-            printf("||   .'  /        \\ .         |\\__ - _ ,'` `        / /     `.`.    ||\n");
-            printf("||   |  '          ..         `-...-\"  |  `-'      / /        . `.  ||\n");
-            printf("||   | /           |L__           |    |          / /          `. ` ||\n");
-            printf("||  , /            .   .          |    |         / /             ` `||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
+  desenhaPokemons['P'] = desenhaPikachu;
+  desenhaPokemons['C'] = desenhaCharizard;
+  desenhaPokemons['B'] = desenhaBlastoise;
+  desenhaPokemons['V'] = desenhaVenosauro;
+  desenhaPokemons['S'] = desenhaSteelix;
+  desenhaPokemons['M'] = desenhaMew;
+}
 
-        case 'B':
-            printf(" ====================================================================\n");
-            printf("||                 _,..-\"\"\"--' `,.-\".                               ||\n");
-            printf("||               ,'      __.. --',  |                               ||\n");
-            printf("||             _/   _.-\"' |    .' | |       ____                    ||\n");
-            printf("||       ,.-\"\"'    `-\"+.._|     `.' | `-..,',--.`.                  ||\n");
-            printf("||      |   ,.                      '    j 7    l \\__               ||\n");
-            printf("||      |.-'                            /| |    j||  .              ||\n");
-            printf("||      `.                   |         / L`.`\"\"','|\\  \\             ||\n");
-            printf("||        `.,----..._       ,'`\"'-.  ,'   \\ `\"\"'  | |  l            ||\n");
-            printf("||          Y        `-----'       v'    ,'`,.__..' |   .           ||\n");
-            printf("||           `.                   /     /   /     `.|   |           ||\n");
-            printf("||             `.                /     l   j       ,^.  |L          ||\n");
-            printf("||               `._            L       +. |._   .' \\|  | \\         ||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
+void desenhaPokemon(char code)
+{
+   desenhaPokemons[code]();
+}
 
-        case 'M':
-            printf(" ====================================================================\n");
-            printf("||              /H/  /H/      H==H      /=    H                     ||\n");
-            printf("||             /   HH=          =H      H==    /                    ||\n");
-            printf("||             H== ==           //      /==    H                    ||\n");
-            printf("||             /==             // /      H==   /                    ||\n");
-            printf("||              H=   /H/==     H H /      H==   /                   ||\n");
-            printf("||               H=  H=H/=     /H/ H       H==  H                   ||\n");
-            printf("||                H= H HH/     =/ =/        H===H/                  ||\n");
-            printf("||                H= H H /      ==H  H       H=H=H/                 ||\n");
-            printf("||                /==/HH/=       H  H=/       H= HH/                ||\n");
-            printf("||                 H======       / H=/H      /=  / H                ||\n");
-            printf("||                  /H==/==     H H== /      H= /  H                ||\n");
-            printf("||                     HH/HHHHH/ H/==H       /= H =H                ||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
+void desenhaPikachu()
+{
+    printf(" ====================================================================\n");
+    printf("||                            _..----\"\"---.'      /                 ||\n");
+    printf("||      _.....---------...,-\"\"                  ,'                  ||\n");
+    printf("||      `-._  \\                                /                    ||\n");
+    printf("||          `-.+_            __           ,--. .                    ||\n");
+    printf("||               `-.._     .:  ).        (`--\"| \\                   ||\n");
+    printf("||                    7    | `\" |         `...'  \\                  ||\n");
+    printf("||                    |     `--'     '+\"        ,\". ,\"\"-            ||\n");
+    printf("||                    |   _...        .____     | |/    '           ||\n");
+    printf("||               _.   |  .    `.  '--\"   /      `./     j           ||\n");
+    printf("||              \\' `-.|  '     |   `.   /        /     /            ||\n");
+    printf("||              '     `-. `---\"      `-\"        /     /             ||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
+}
 
-        case 'S':
-            printf(" ====================================================================\n");
-            printf("||.        _______|                 .-'    |.       `. '            ||\n");
-            printf("|| `...---\"     .-'               .'       | `.                 ,  '||\n");
-            printf("|| ,'._     _,-\"                  `        |  ,`.  ,  .    _.-'|    ||\n");
-            printf("||.    `\"\"-'    `.                 \\       `.....`.     .-',   |    ||\n");
-            printf("|||             _,|                 ._ --.        |     '\"--...     ||\n");
-            printf("|| `.--\"`.....-\" ,                    /\".`        |   |        _____||\n");
-            printf("||   .       | .'_                   /   \\        |  j       \"'_,..'||\n");
-            printf("||    /`-...-+\"   `.                 '   .'.__ -..'  |_,..   ,'  |  ||\n");
-            printf("||   '          ____.                 \\  |    \"`-..___,....-.    '  ||\n");
-            printf("||    .     _.\"\"'   |                  `. .                 / .-'   ||\n");
-            printf("||     `. .'       .._                   \\ \\               / /      ||\n");
-            printf("||       `-._   _.'   `.                  \\.--......____ .' /       ||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
+void desenhaCharizard()
+{
+    printf(" ====================================================================\n");
+    printf("||                   `--Y.'      ___.                _              ||\n");
+    printf("||                        \\     L._, \\                _             ||\n");
+    printf("||              _.,        `.   <  <\\                _              ||\n");
+    printf("||            ,' '           `, `.   | \\            ( `             ||\n");
+    printf("||         ../, `.            `  |    .\\`.           \\ \\_           ||\n");
+    printf("||        ,' ,..  .           _.,'    ||\\l            )  '\".        ||\n");
+    printf("||       , ,'   \\           ,'.-.`-._,'  |           .  _._`.       ||\n");
+    printf("||     ,' /      \\ \\        `' ' `--/   | \\          / /   ..\\      ||\n");
+    printf("||   .'  /        \\ .         |\\__ - _ ,'` `        / /     `.`.    ||\n");
+    printf("||   |  '          ..         `-...-\"  |  `-'      / /        . `.  ||\n");
+    printf("||   | /           |L__           |    |          / /          `. ` ||\n");
+    printf("||  , /            .   .          |    |         / /             ` `||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
+}
 
-        case 'P':
-            printf(" ====================================================================\n");
-            printf("||                            _..----\"\"---.'      /                 ||\n");
-            printf("||      _.....---------...,-\"\"                  ,'                  ||\n");
-            printf("||      `-._  \\                                /                    ||\n");
-            printf("||          `-.+_            __           ,--. .                    ||\n");
-            printf("||               `-.._     .:  ).        (`--\"| \\                   ||\n");
-            printf("||                    7    | `\" |         `...'  \\                  ||\n");
-            printf("||                    |     `--'     '+\"        ,\". ,\"\"-            ||\n");
-            printf("||                    |   _...        .____     | |/    '           ||\n");
-            printf("||               _.   |  .    `.  '--\"   /      `./     j           ||\n");
-            printf("||              \\' `-.|  '     |   `.   /        /     /            ||\n");
-            printf("||              '     `-. `---\"      `-\"        /     /             ||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
+void desenhaBlastoise()
+{
+    printf(" ====================================================================\n");
+    printf("||                 _,..-\"\"\"--' `,.-\".                               ||\n");
+    printf("||               ,'      __.. --',  |                               ||\n");
+    printf("||             _/   _.-\"' |    .' | |       ____                    ||\n");
+    printf("||       ,.-\"\"'    `-\"+.._|     `.' | `-..,',--.`.                  ||\n");
+    printf("||      |   ,.                      '    j 7    l \\__               ||\n");
+    printf("||      |.-'                            /| |    j||  .              ||\n");
+    printf("||      `.                   |         / L`.`\"\"','|\\  \\             ||\n");
+    printf("||        `.,----..._       ,'`\"'-.  ,'   \\ `\"\"'  | |  l            ||\n");
+    printf("||          Y        `-----'       v'    ,'`,.__..' |   .           ||\n");
+    printf("||           `.                   /     /   /     `.|   |           ||\n");
+    printf("||             `.                /     l   j       ,^.  |L          ||\n");
+    printf("||               `._            L       +. |._   .' \\|  | \\         ||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
+}
 
-        case 'V':
-            printf(" ====================================================================\n");
-            printf("||`\"' /  /  / ,__...-----| _.,  ,'            `|----.._`-.|' |. .` .||\n");
-            printf("||  /  '| /.,/   \\--.._ `-,' ,          .  '`.'  __,., '  ''``._ \\ \\||\n");
-            printf("|| /_,'---  ,     \\`._,-` \\ //  / . \\    `._,  -`,  / / _   |   `-L ||\n");
-            printf("||  /       `.     ,  ..._ ' `_/ '| |\\ `._'       '-.'   `.,'     | ||\n");
-            printf("|| '         /    /  ..   `.  `./ | ; `.'    ,\"\" ,.  `.    \\      | ||\n");
-            printf("||  `.     ,'   ,'   | |\\  |       \"        |  ,'\\ |   \\    `    ,L ||\n");
-            printf("||  /|`.  /    '     | `-| '                  /`-' |    L    `._/  \\||\n");
-            printf("|| / | .`|    |  .   `._.'                   `.__,'   .  |     |  (`||\n");
-            printf("||'-\"\"-'_|    `. `.__,._____     .    _,        ____ ,-  j     \".-'\"||\n");
-            printf("||       \\      `-.  \\/.    `\"--.._    _,.---'\"\"\\/  \"_,.'     /-'   ||\n");
-            printf("||        )        `-._ '-.        `--\"      _.-'.-\"\"        `.     ||\n");
-            printf(" ====================================================================\n");
-            printf("\n");
-            break;
-    }
+void desenhaVenosauro()
+{
+    printf(" ====================================================================\n");
+    printf("||`\"' /  /  / ,__...-----| _.,  ,'            `|----.._`-.|' |. .` .||\n");
+    printf("||  /  '| /.,/   \\--.._ `-,' ,          .  '`.'  __,., '  ''``._ \\ \\||\n");
+    printf("|| /_,'---  ,     \\`._,-` \\ //  / . \\    `._,  -`,  / / _   |   `-L ||\n");
+    printf("||  /       `.     ,  ..._ ' `_/ '| |\\ `._'       '-.'   `.,'     | ||\n");
+    printf("|| '         /    /  ..   `.  `./ | ; `.'    ,\"\" ,.  `.    \\      | ||\n");
+    printf("||  `.     ,'   ,'   | |\\  |       \"        |  ,'\\ |   \\    `    ,L ||\n");
+    printf("||  /|`.  /    '     | `-| '                  /`-' |    L    `._/  \\||\n");
+    printf("|| / | .`|    |  .   `._.'                   `.__,'   .  |     |  (`||\n");
+    printf("||'-\"\"-'_|    `. `.__,._____     .    _,        ____ ,-  j     \".-'\"||\n");
+    printf("||       \\      `-.  \\/.    `\"--.._    _,.---'\"\"\\/  \"_,.'     /-'   ||\n");
+    printf("||        )        `-._ '-.        `--\"      _.-'.-\"\"        `.     ||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
+}
+
+void desenhaSteelix()
+{
+    printf(" ====================================================================\n");
+    printf("||.        _______|                 .-'    |.       `. '            ||\n");
+    printf("|| `...---\"     .-'               .'       | `.                 ,  '||\n");
+    printf("|| ,'._     _,-\"                  `        |  ,`.  ,  .    _.-'|    ||\n");
+    printf("||.    `\"\"-'    `.                 \\       `.....`.     .-',   |    ||\n");
+    printf("|||             _,|                 ._ --.        |     '\"--...     ||\n");
+    printf("|| `.--\"`.....-\" ,                    /\".`        |   |        _____||\n");
+    printf("||   .       | .'_                   /   \\        |  j       \"'_,..'||\n");
+    printf("||    /`-...-+\"   `.                 '   .'.__ -..'  |_,..   ,'  |  ||\n");
+    printf("||   '          ____.                 \\  |    \"`-..___,....-.    '  ||\n");
+    printf("||    .     _.\"\"'   |                  `. .                 / .-'   ||\n");
+    printf("||     `. .'       .._                   \\ \\               / /      ||\n");
+    printf("||       `-._   _.'   `.                  \\.--......____ .' /       ||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
+}
+
+void desenhaMew()
+{
+    printf(" ====================================================================\n");
+    printf("||              /H/  /H/      H==H      /=    H                     ||\n");
+    printf("||             /   HH=          =H      H==    /                    ||\n");
+    printf("||             H== ==           //      /==    H                    ||\n");
+    printf("||             /==             // /      H==   /                    ||\n");
+    printf("||              H=   /H/==     H H /      H==   /                   ||\n");
+    printf("||               H=  H=H/=     /H/ H       H==  H                   ||\n");
+    printf("||                H= H HH/     =/ =/        H===H/                  ||\n");
+    printf("||                H= H H /      ==H  H       H=H=H/                 ||\n");
+    printf("||                /==/HH/=       H  H=/       H= HH/                ||\n");
+    printf("||                 H======       / H=/H      /=  / H                ||\n");
+    printf("||                  /H==/==     H H== /      H= /  H                ||\n");
+    printf("||                     HH/HHHHH/ H/==H       /= H =H                ||\n");
+    printf(" ====================================================================\n");
+    printf("\n");
 }

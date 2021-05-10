@@ -1,11 +1,13 @@
 #include "menu.h"
 
-void menuPrincipal()
+void menuPrincipal(char* arquivoPlacar, char* arquivoLog)
 {
     inicializaTabelaPokemons();
     char opcao[10];
     char nome[20];
     Jogador *jogador = NULL;
+    FILE *log = fopen(arquivoLog, "w");
+    int contadorPartidas = 1;
     do
     {
         imprimeMenuPrincipal();
@@ -21,7 +23,13 @@ void menuPrincipal()
             if(jogador == NULL)
                 jogador = criaJogador(nome);
             menuIniciais(jogador);
-            menuBatalha(jogador);
+            menuBatalha(jogador, log, contadorPartidas);
+            contadorPartidas++;
+            if(jogador != NULL)
+            {
+                destroiJogador(jogador); 
+                jogador = NULL;
+            }
             break;
 
         case 2:
@@ -32,7 +40,7 @@ void menuPrincipal()
         }
     }
     while(atoi(opcao) != 3);
-    destroiJogador(jogador);
+    fclose(log);
 }
 
 void imprimeMenuPrincipal()

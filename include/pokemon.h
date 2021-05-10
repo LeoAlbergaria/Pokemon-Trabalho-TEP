@@ -29,6 +29,8 @@ void retiraEfeitosPokemon(Pokemon *pokemon);
 
 void imprimeEfeitosPokemon(Pokemon *pokemon);
 
+void imprimeArquivoEfeitosPokemon(Pokemon *pokemon, FILE *log);
+
 int verificaEfeitos(Pokemon *pokemon);
 
 void resetaEfeitosPokemon(Pokemon *pokemon);
@@ -93,6 +95,20 @@ Pokemon *steelix();
 
 Pokemon *mew();
 
-void desenhaPokemon(char letraPokemon);
+void inicializaTabelaDesenhaPokemons();
+
+void desenhaPokemon(char code);
+
+void desenhaPikachu();
+
+void desenhaCharizard();
+
+void desenhaBlastoise();
+
+void desenhaVenosauro();
+
+void desenhaSteelix();
+
+void desenhaMew();
 
 #endif

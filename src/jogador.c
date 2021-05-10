@@ -2,7 +2,6 @@
 
 struct jogador
 {
-    int id;
     char *nome;
     int qtdPokemons;
     int qtdPokebolas;
@@ -15,7 +14,6 @@ Jogador *criaJogador(char *nome)
 {
     Jogador *jogador = (Jogador*)calloc(1, sizeof(Jogador));
 
-    jogador->id = 1;
     jogador->nome = strdup(nome);
     jogador->qtdPokemons = 0;
     jogador->qtdPokebolas = 3;

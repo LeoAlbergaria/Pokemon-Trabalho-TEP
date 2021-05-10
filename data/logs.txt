@@ -1,0 +1,138 @@
+1.1 - Mew vs Charizard
+	Mew usou Auto-Destruir
+	Mew - 0.0% HP
+	Charizard - 70.5% HP
+
+	leonardo perdeu!
+1.2 - Pikachu vs Charizard
+	Charizard usou Bater
+	Pikachu - 90.0% HP
+	Charizard - 70.5% HP
+
+	Pikachu usou Bater
+	Pikachu - 90.0% HP
+	Charizard - 66.6% HP
+
+	Charizard usou Dormir
+	Pikachu - 90.0% HP
+	Charizard - 66.6% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 90.0% HP
+	Charizard - 62.7% HP ( Dormindo )
+
+	Pikachu - 90.0% HP
+	Charizard - 62.7% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 90.0% HP
+	Charizard - 58.7% HP ( Dormindo )
+
+	Pikachu - 90.0% HP
+	Charizard - 58.7% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 90.0% HP
+	Charizard - 96.1% HP
+
+	Charizard usou Bater
+	Pikachu - 80.1% HP
+	Charizard - 96.1% HP
+
+	Pikachu usou Bater
+	Pikachu - 80.1% HP
+	Charizard - 92.1% HP
+
+	Charizard usou Lança Chamas
+	Pikachu - 48.3% HP
+	Charizard - 92.1% HP
+
+	Pikachu usou Bater
+	Pikachu - 48.3% HP
+	Charizard - 88.2% HP
+
+	Charizard usou Dormir
+	Pikachu - 48.3% HP
+	Charizard - 88.2% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 48.3% HP
+	Charizard - 84.3% HP ( Dormindo )
+
+	Pikachu - 48.3% HP
+	Charizard - 84.3% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 48.3% HP
+	Charizard - 80.4% HP ( Dormindo )
+
+	Pikachu - 48.3% HP
+	Charizard - 80.4% HP ( Dormindo )
+
+	Pikachu usou Bater
+	Pikachu - 48.3% HP
+	Charizard - 96.1% HP
+
+	Charizard usou Lança Chamas
+	Pikachu - 16.6% HP
+	Charizard - 96.1% HP
+
+	Pikachu usou Bater
+	Pikachu - 16.6% HP
+	Charizard - 92.1% HP
+
+	Charizard usou Lança Chamas
+	Pikachu - 0.0% HP
+	Charizard - 92.1% HP
+
+	leonardo perdeu!
+1.3 - Venosauro vs Charizard
+	Venosauro usou Dois Gumes
+	Venosauro - 97.9% HP
+	Charizard - 84.9% HP
+
+	Charizard usou Bater
+	Venosauro - 89.1% HP
+	Charizard - 84.9% HP
+
+	Venosauro usou Dois Gumes
+	Venosauro - 87.0% HP
+	Charizard - 77.6% HP
+
+	Charizard usou Bater
+	Venosauro - 78.2% HP
+	Charizard - 77.6% HP
+
+	Venosauro usou Dois Gumes
+	Venosauro - 76.1% HP
+	Charizard - 70.3% HP
+
+	Charizard usou Lança Chamas
+	Venosauro - 48.9% HP
+	Charizard - 70.3% HP
+
+	Venosauro usou Dois Gumes
+	Venosauro - 46.8% HP
+	Charizard - 63.0% HP
+
+	Charizard usou Bater
+	Venosauro - 38.0% HP
+	Charizard - 63.0% HP
+
+	Venosauro usou Dois Gumes
+	Venosauro - 35.9% HP
+	Charizard - 55.8% HP
+
+	Charizard usou Lança Chamas
+	Venosauro - 8.7% HP
+	Charizard - 55.8% HP
+
+	Venosauro usou Dois Gumes
+	Venosauro - 6.6% HP
+	Charizard - 48.5% HP
+
+	Charizard usou Lança Chamas
+	Venosauro - 0.0% HP
+	Charizard - 48.5% HP
+
+	leonardo perdeu!
