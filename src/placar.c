@@ -92,21 +92,26 @@ ListaPlacar *inserePlacar(Jogador *jogador, ListaPlacar *listaPlacar)
     ListaPlacar *novaCelula = (ListaPlacar*)malloc(sizeof(ListaPlacar));
     novaCelula->nome = strdup(retornaNome(jogador));
     novaCelula->pontuacao = retornaVitorias(jogador);
-    int index = 1, primeiro = 1;
-
-    while(celulaAtual->prox != NULL && celulaAtual->prox->pontuacao > novaCelula->pontuacao)
+    int index = 2;
+    if(celulaAtual->pontuacao < novaCelula->pontuacao)
     {
-        celulaAtual = celulaAtual->prox;
-        index++;
-        primeiro = 0;
+        novaCelula->prox = celulaAtual;
+        printf("Fim de jogo!\n%s sobreviveu %d rodadas e está em 1° lugar no placar!\n", retornaNome(jogador), retornaVitorias(jogador));
+        return novaCelula;
     }
-
-    if(primeiro == 0) index++;
+    else
+    {
+        while(celulaAtual->prox != NULL && celulaAtual->prox->pontuacao > novaCelula->pontuacao)
+        {
+            celulaAtual = celulaAtual->prox;
+            index++;
+        }
+        novaCelula->prox = celulaAtual->prox;
+        celulaAtual->prox = novaCelula;
+    }
 
     printf("Fim de jogo!\n%s sobreviveu %d rodadas e está em %d° lugar no placar!\n", retornaNome(jogador), retornaVitorias(jogador), index);
 
-    novaCelula->prox = celulaAtual->prox;
-    celulaAtual->prox = novaCelula;
     return listaPlacar; 
 }
 

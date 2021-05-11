@@ -1,3 +1,5 @@
 leonardo 5
-rafael 3
-lucas 1
+leonardo 2
+leonard 2
+rafael 0
+lucas 0

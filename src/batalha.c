@@ -132,7 +132,8 @@ void menuBatalha(Jogador *jogador, int contadorPartidas, FILE *log, char *arquiv
     }
     destroiPokemon(pokemonInimigo);
     resultadoPlacar(jogador, arquivoPlacar);
-    fprintf(log, "Fim do jogo %d %s sebreviveu %d batalhas\n", contadorPartidas, retornaNome(jogador), retornaVitorias(jogador));
+    fprintf(log, "\tFim do jogo %d %s sebreviveu %d batalhas\n", contadorPartidas, retornaNome(jogador), retornaVitorias(jogador));
+    getchar();
 }
 
 void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon)
