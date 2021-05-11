@@ -84,15 +84,10 @@ void inicializaTabelaPokemons();
 Pokemon *selecionaPokemon(char code);
 
 Pokemon *pikachu();
-
 Pokemon *charizard();
-
 Pokemon *blastoise();
-
 Pokemon *venosauro();
-
 Pokemon *steelix();
-
 Pokemon *mew();
 
 void inicializaTabelaDesenhaPokemons();
@@ -100,15 +95,10 @@ void inicializaTabelaDesenhaPokemons();
 void desenhaPokemon(char code);
 
 void desenhaPikachu();
-
 void desenhaCharizard();
-
 void desenhaBlastoise();
-
 void desenhaVenosauro();
-
 void desenhaSteelix();
-
 void desenhaMew();
 
 #endif

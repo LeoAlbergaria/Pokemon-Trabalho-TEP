@@ -1,6 +1,6 @@
 #include "batalha.h"
 
-void menuBatalha(Jogador *jogador, FILE *log, int contadorPartidas)
+void menuBatalha(Jogador *jogador, int contadorPartidas, FILE *log, char *arquivoPlacar)
 {
     inicializaTabelaAtaques();
     inicializaTabelaDesenhaPokemons();
@@ -88,7 +88,7 @@ void menuBatalha(Jogador *jogador, FILE *log, int contadorPartidas)
             }
             else    
                 break;
-            imprimeVidaBatalha(pokemonInimigo, pokemonAtual);
+            imprimeVidaBatalha(pokemonAtual, pokemonInimigo);
             fprintf(log,"%d.%d - %s vs %s\n", contadorPartidas, contadorBatalhas, retornaNomePokemon(pokemonAtual), retornaNomePokemon(pokemonInimigo));
             contadorBatalhas++;
         }
@@ -131,7 +131,8 @@ void menuBatalha(Jogador *jogador, FILE *log, int contadorPartidas)
         }
     }
     destroiPokemon(pokemonInimigo);
-    printf("GAME OVER!!! Voce fez %d pontos\n", retornaVitorias(jogador));
+    resultadoPlacar(jogador, arquivoPlacar);
+    fprintf(log, "Fim do jogo %d %s sebreviveu %d batalhas\n", contadorPartidas, retornaNome(jogador), retornaVitorias(jogador));
 }
 
 void imprimeMenuOpcoes(Jogador *jogador, Pokemon *pokemon)

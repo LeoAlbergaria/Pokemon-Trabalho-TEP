@@ -10,6 +10,7 @@ void menuPrincipal(char* arquivoPlacar, char* arquivoLog)
     int contadorPartidas = 1;
     do
     {
+        system("clear");
         imprimeMenuPrincipal();
         scanf("%s", opcao); 
         switch(atoi(opcao))
@@ -23,7 +24,7 @@ void menuPrincipal(char* arquivoPlacar, char* arquivoLog)
             if(jogador == NULL)
                 jogador = criaJogador(nome);
             menuIniciais(jogador);
-            menuBatalha(jogador, log, contadorPartidas);
+            menuBatalha(jogador, contadorPartidas, log, arquivoPlacar);
             contadorPartidas++;
             if(jogador != NULL)
             {
@@ -33,13 +34,14 @@ void menuPrincipal(char* arquivoPlacar, char* arquivoLog)
             break;
 
         case 2:
+            system("clear");
+            imprimePlacar(arquivoPlacar);
             break;
 
         case 3:
             break;
         }
-    }
-    while(atoi(opcao) != 3);
+    }while(atoi(opcao) != 3);
     fclose(log);
 }
 
