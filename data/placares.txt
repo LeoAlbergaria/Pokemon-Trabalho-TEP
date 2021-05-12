@@ -1,5 +1,6 @@
-leonardo 5
 leonardo 2
-leonard 2
-rafael 0
-lucas 0
+alverto 1
+carlos 1
+danilo 1
+leonardo 1
+titi 1

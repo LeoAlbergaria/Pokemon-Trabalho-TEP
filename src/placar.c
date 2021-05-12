@@ -101,8 +101,11 @@ ListaPlacar *inserePlacar(Jogador *jogador, ListaPlacar *listaPlacar)
     }
     else
     {
-        while(celulaAtual->prox != NULL && celulaAtual->prox->pontuacao > novaCelula->pontuacao)
+        while(celulaAtual->prox != NULL && celulaAtual->prox->pontuacao >= novaCelula->pontuacao)
         {
+            if(celulaAtual->prox->pontuacao == novaCelula->pontuacao)
+                if(strcmp(celulaAtual->prox->nome, novaCelula->nome) > 0)
+                    break;
             celulaAtual = celulaAtual->prox;
             index++;
         }
