@@ -2,11 +2,6 @@
 Prof. Vinicíus Mota 
 DI/UFES
 
-**Data de entrega: 12/05/2021**
-Locais de entrega:
- - submetido pelo Repl.it; 
- -  E também pelo AVA.
-
 ## Consideração inicial
 
 Descrições de trabalhos podem conter erros (acho que experienciamos isso de primeira mão esse semestre). É muito importante que esses erros sejam corrigidos o mais cedo possível. Leia essa descrição com calma e, caso tenha dúvidas ou algum erro para reportar, fale com os monitores o mais rápido possível!
@@ -364,48 +359,3 @@ Uma execução do trabalho deve ser do tipo:
     $ ./tp2 dir/para/placares.txt dir/para/logs.txt 42
 
 **Atenção:** é importante converter o valor passado via argumento para inteiro antes de usar como *seed*.
-
-## 5. Regras Gerais
-
-O trabalho deverá ser feito **em dupla** e pelos próprios alunos, isto é, os alunos deverão necessariamente conhecer e dominar todos os trechos de código criados. 
-
-Cada dupla deverá trabalhar independente das outras, não sendo permitido a cópia ou compartilhamento de código. O professor irá fazer verificação automática de plágio. Trabalhos identificados como iguais, em termos de programação, serão penalizados com a nota zero. Isso também inclui a dupla que forneceu o trabalho, sendo, portanto, de sua obrigação a proteção de seu trabalho contra cópias ilícitas.
-
-## 6. Entrega do Trabalho
-
-O trabalho deverá ser submetido pelo Repl.it  e também pelo AVA até  as 23:59 do dia xx/05/2021. 
-
-O arquivo enviado pelo AVA deve  seguir o padrão: TEP-2021_MATRICULA1_MATRICULA2.zip, substituindo a matrícula pelos respectivos números de matrícula da dupla.  
-O arquivo zip deve conter:
-Todos os arquivos necessários para compilação (cabeçalhos e códigos fontes)
-`Makefile` que compile o programa corretamente em um ambiente Linux.
-`README.md` contendo nome da dupla e com considerações de projeto que julgue necessário, incluindo as decisões de projeto tomadas. Por exemplo, explicação breve das bibliotecas,  etc.
- 
-O código fonte deverá estar bem comentado, isto é, todas os structs e funções devem ter descrições claras do que ela faz, o que representa cada parâmetro e o que ela retorna (se houver).  Pode-se adicionar também comentários que ajudem a entender a lógica da  questão.
-
-## 7. Avaliação
-
-O trabalho será corrigido em dois turnos: correção do professor e entrevista. A correção do professor (CP) gerará uma nota entre 0 e 10 e as entrevistas (E) serão realizadas posteriormente à data de entrega do trabalho e será atribuída uma nota entre 0 e 1. Alunos que fizeram o trabalho em dupla farão a entrevista juntos porém terão seus desempenhos na entrevista avaliados de forma individual. Pequenas e pontuais correções de código serão permitidas no momento da entrevista, o que poderá acarretar em uma CP maior.
-
-A nota final (NF) do trabalho será dada pela seguinte fórmula: NF = E * CP
-
-O trabalho será pontuado de acordo com sua funcionalidade e outros aspectos de implementação, conforme as listas abaixo.
-
-### Aspectos funcionais
-
-1. Implementar os pokemos e suas relações de tipo corretamente(10%)
-2. Implementar os ataques de forma correta(10%)
-3. Implementar a lógica de jogo corretamente (turnos, status, etc)(10%)
-4. Implementar o placar corretamente(5%)
-5. Gerar os arquivos corretamente(15%)
-
-    Placar (5%)
-    Log de batalhas (10%)
-
-
-### Aspectos de desenvolvimento:
-
-1. Uso correto de TADs para abstração dos elementos envolvidos no trabalho. Menos *main* mais TADs! (15%)
-2. Uso de callbacks (10%)
-3. Uso de estruturas encadeadas (10%)
-4. Executar o programa com o valgrind, sair corretamente e não ter vazamento de memória. (15%) 
